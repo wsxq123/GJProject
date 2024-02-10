@@ -12,16 +12,16 @@
       <span class="material-icons black"> search </span>
     </button>
 
-    <button mat-button>關於我們</button>
-    <button mat-button>旅遊行程</button>
-    <button mat-button>會員中心</button>
-    <button mat-flat-button color="warn">會員登入</button>
+    <button mat-button routerLink="/about">關於我們</button>
+    <button mat-button routerLink="/product">旅遊行程</button>
+    <button mat-button routerLink="/memberInfo">會員中心</button>
+    <button mat-flat-button color="warn" routerLink="/login">會員登入</button>
 
     <button mat-icon-button class="search button">
       <span class="material-icons black"> translate </span>
     </button>
 
-    <button mat-icon-button class="search button">
+    <button mat-icon-button class="search button" routerLink="/shoppingCart">
       <span class="material-icons black"> shopping_cart </span>
     </button>
 
@@ -33,3 +33,4 @@
     </button> -->
   </mat-toolbar>
 </p>
+<router-outlet />
