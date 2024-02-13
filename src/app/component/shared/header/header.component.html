@@ -1,36 +1,56 @@
 <p>
-  <mat-toolbar color="white">
-    <img
-      [ngSrc]="logoImagUrl"
-      alt="logoImagUrl"
-      width="170"
-      height="50"
-      priority />
+  <mat-toolbar>
+    <button
+      mat-button
+      [routerLinkActiveOptions]="{exact: true}"
+      [routerLink]="'/'| localize"
+      routerLinkActive="active">
+      <img
+        [ngSrc]="logoImagUrl"
+        alt="logoImagUrl"
+        width="170"
+        height="50"
+        priority />
+    </button>
+
     <span class="example-spacer"></span>
 
     <button mat-icon-button class="search button">
       <span class="material-icons black"> search </span>
     </button>
 
-    <button mat-button routerLink="/about">關於我們</button>
-    <button mat-button routerLink="/product">旅遊行程</button>
-    <button mat-button routerLink="/memberInfo">會員中心</button>
-    <button mat-flat-button color="warn" routerLink="/login">會員登入</button>
+    <button
+      *ngFor="let hbm of headerBtnList"
+      mat-flat-button
+      [color]="(hbm.isWarn)? 'warn':''"
+      [routerLinkActiveOptions]="{exact: true}"
+      [routerLink]="hbm.path| localize"
+      routerLinkActive="active">
+      {{hbm.btnText | translate}}
+    </button>
 
-    <button mat-icon-button class="search button">
+    <button mat-icon-button class="search button" [matMenuTriggerFor]="menu">
       <span class="material-icons black"> translate </span>
     </button>
 
-    <button mat-icon-button class="search button" routerLink="/shoppingCart">
+    <mat-menu #menu="matMenu">
+      <div *ngFor="let locale of locales">
+        <button
+          mat-menu-item
+          routerLink="/{{locale[0]}}/{{currentUrl}}"
+          routerLinkActive="active">
+          <span>{{locale[1]}}</span>
+        </button>
+      </div>
+    </mat-menu>
+
+    <button
+      mat-icon-button
+      class="search button"
+      [routerLinkActiveOptions]="{exact: true}"
+      [routerLink]="'/shoppingCart' | localize"
+      routerLinkActive="active">
       <span class="material-icons black"> shopping_cart </span>
     </button>
-
-    <!-- <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button> -->
   </mat-toolbar>
 </p>
-<router-outlet />
