@@ -1,42 +1,18 @@
-<div>
+<div class="homeComponentContainer">
   <div class="slideShowContainer">
     <img
       mat-card-image
       [src]="slideShowUrlList[currentSlideShowNum]"
-      alt="SideShowImg" />
+      alt="SideShowImg"
+      style="margin-top: 110px" />
   </div>
   <!-- <button (click)="changeSlideShow()">change</button> -->
-
-  <div style="display: flex; flex-direction: column; margin-top: 30px">
-    <div style="display: flex; flex-direction: row; justify-content: center">
-      <h1 style="margin-right: 20px">日本旅行推薦</h1>
-      <h1>春英四國松山</h1>
-    </div>
-    <div style="display: flex; flex-direction: row; justify-content: center">
-      <div style="display: flex; flex-direction: column; margin: 10px">
-        <img src="assets/image/homePage/JapenImg01.png" alt="JapenImg" />
-        <p>介紹</p>
-      </div>
-      <div style="display: flex; flex-direction: column; margin: 10px">
-        <img src="assets/image/homePage/JapenImg02.png" alt="JapenImg" />
-        <p>介紹</p>
-      </div>
-      <div style="display: flex; flex-direction: column; margin: 10px">
-        <img src="assets/image/homePage/JapenImg03.png" alt="JapenImg" />
-        <p>介紹</p>
-      </div>
-      <div style="display: flex; flex-direction: column; margin: 10px">
-        <img src="assets/image/homePage/JapenImg04.png" alt="JapenImg" />
-        <p>介紹</p>
-      </div>
-    </div>
-  </div>
 
   <div
     style="display: flex; flex-direction: column; margin-top: 30px"
     *ngFor="let rcl of recommandCardList">
     <div style="display: flex; flex-direction: row; justify-content: center">
-      <h1 style="margin-right: 20px">{{rcl.travelCommand}}</h1>
+      <h1 style="margin-right: 20px">{{rcl.travelCommand | translate}}</h1>
       <h1>{{rcl.content}}</h1>
     </div>
     <div style="display: flex; flex-direction: row; justify-content: center">
@@ -49,7 +25,7 @@
           width="300"
           height="180"
           priority />
-        <p>{{item.content}}</p>
+        <p style="text-align: center">{{item.content}}</p>
       </div>
     </div>
   </div>

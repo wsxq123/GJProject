@@ -1,1 +1,21 @@
-<p>footer works!</p>
+<div
+  class="footerContainer"
+  style="display: flex; justify-content: center; background-color: #e9d3ee">
+  <div style="display: flex; justify-content: center; width: 80%; margin: 30px">
+    <div style="display: flex; flex-direction: column; flex-grow: 1">
+      <app-logo-btn
+        [bgColor]="bgcolor"
+        style="background-color: #e9d3ee; width: 300px" />
+      <p style="margin-top: 30px">{{copyRight}}</p>
+    </div>
+
+    <div *ngFor="let ftl of footerTextList" style="display: flex; flex-grow: 1">
+      <div style="flex-grow: 1">
+        <p style="font-weight: bold">{{ftl.title}}</p>
+        <div *ngFor="let tl of ftl.textList">
+          <p>{{tl}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

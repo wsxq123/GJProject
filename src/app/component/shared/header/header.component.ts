@@ -18,10 +18,13 @@ import {
 } from '@gilsdav/ngx-translate-router';
 import { filter } from 'rxjs';
 import { headerBtnItem } from './headerBtnType';
+import { LogoBtnComponent } from '../logo-btn/logo-btn.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
   imports: [
     RouterOutlet,
     RouterLink,
@@ -34,12 +37,12 @@ import { headerBtnItem } from './headerBtnType';
     CommonModule,
     LocalizeRouterModule,
     RouterLinkActive,
+    LogoBtnComponent,
   ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   logoImagUrl = 'assets/image/logo_v2.png';
+  bgcolor = 'white';
 
   private readonly localizeRouterService = inject(LocalizeRouterService);
   private readonly router = inject(Router);

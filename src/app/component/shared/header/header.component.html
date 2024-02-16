@@ -1,18 +1,6 @@
-<p>
-  <mat-toolbar>
-    <button
-      mat-button
-      [routerLinkActiveOptions]="{exact: true}"
-      [routerLink]="'/'| localize"
-      routerLinkActive="active">
-      <img
-        [ngSrc]="logoImagUrl"
-        alt="logoImagUrl"
-        width="170"
-        height="50"
-        priority />
-    </button>
-
+<div>
+  <mat-toolbar style="position: fixed">
+    <app-logo-btn [bgColor]="bgcolor" />
     <span class="example-spacer"></span>
 
     <button mat-icon-button class="search button">
@@ -53,4 +41,4 @@
       <span class="material-icons black"> shopping_cart </span>
     </button>
   </mat-toolbar>
-</p>
+</div>
