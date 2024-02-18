@@ -17,8 +17,8 @@ import {
   LocalizeRouterModule,
 } from '@gilsdav/ngx-translate-router';
 import { filter } from 'rxjs';
-import { headerBtnItem } from './headerBtnType';
 import { LogoBtnComponent } from '../logo-btn/logo-btn.component';
+import { headerBtnList } from './headerBtnList';
 
 @Component({
   selector: 'app-header',
@@ -46,36 +46,21 @@ export class HeaderComponent {
 
   private readonly localizeRouterService = inject(LocalizeRouterService);
   private readonly router = inject(Router);
+
+  protected isCollapsed = true;
+  protected currentUrl = '';
   protected readonly locales = [
     ['en-US', 'English'],
     ['ja-JP', '日本語'],
     ['zh-TW', '繁體中文'],
   ];
-  protected isCollapsed = true;
-  protected currentUrl = '';
-
-  headerBtnList: headerBtnItem[] = [
-    {
-      btnText: 'ABOUTUS',
-      path: '/about',
-      isWarn: false,
-    },
-    {
-      btnText: 'TRAVEL',
-      path: '/product',
-      isWarn: false,
-    },
-    {
-      btnText: 'MEMBER',
-      path: '/memberInfo',
-      isWarn: false,
-    },
-    {
-      btnText: 'LOGIN',
-      path: '/login',
-      isWarn: true,
-    },
+  travelMenuList = [
+    { title: 'JAPAN', path: '/product/japanTravel' },
+    { title: 'KOREA', path: '/product/koreaTravel' },
+    { title: 'EUROPE', path: '/product/europeTravel' },
   ];
+
+  headerBtnList = headerBtnList;
 
   constructor() {
     this.setCurrentUrl();

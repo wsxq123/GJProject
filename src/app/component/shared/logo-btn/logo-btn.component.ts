@@ -1,15 +1,22 @@
 import { Component, Input } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-logo-btn',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgOptimizedImage],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    NgOptimizedImage,
+    LocalizeRouterModule,
+  ],
   template: ` <button
     mat-button
     [routerLinkActiveOptions]="{ exact: true }"
-    [routerLink]="'/'"
+    [routerLink]="'/' | localize"
     routerLinkActive="active"
     style="border: none; background-color:{{ bgColor }}; cursor: pointer;">
     <img

@@ -1,25 +1,35 @@
 <div>
-  <mat-toolbar style="position: fixed">
+  <mat-toolbar style="position: fixed; z-index: 99">
     <app-logo-btn [bgColor]="bgcolor" />
     <span class="example-spacer"></span>
 
-    <button mat-icon-button class="search button">
-      <span class="material-icons black"> search </span>
-    </button>
+    <div *ngFor="let hbm of headerBtnList">
+      <button
+        mat-flat-button
+        *ngIf="hbm.isFlatBtn === true; else iconBtn"
+        [matMenuTriggerFor]="hbm.isMenu? travelMenu:null"
+        [color]="(hbm.isWarn)? 'warn':''"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="hbm.path? (hbm.path| localize):null"
+        routerLinkActive="active">
+        {{hbm.btnText | translate}}
+      </button>
 
-    <button
-      *ngFor="let hbm of headerBtnList"
-      mat-flat-button
-      [color]="(hbm.isWarn)? 'warn':''"
-      [routerLinkActiveOptions]="{exact: true}"
-      [routerLink]="hbm.path| localize"
-      routerLinkActive="active">
-      {{hbm.btnText | translate}}
-    </button>
-
-    <button mat-icon-button class="search button" [matMenuTriggerFor]="menu">
-      <span class="material-icons black"> translate </span>
-    </button>
+      <ng-template #iconBtn>
+        <button mat-icon-button *ngIf="hbm.isMenu" [matMenuTriggerFor]="menu">
+          <span class="material-icons black"> {{hbm.btnText}} </span>
+        </button>
+        <button
+          mat-icon-button
+          *ngIf="hbm.path"
+          class="icon button"
+          [routerLinkActiveOptions]="{exact: true}"
+          [routerLink]="hbm.path| localize"
+          routerLinkActive="active">
+          <span class="material-icons black"> {{hbm.btnText}} </span>
+        </button>
+      </ng-template>
+    </div>
 
     <mat-menu #menu="matMenu">
       <div *ngFor="let locale of locales">
@@ -32,13 +42,16 @@
       </div>
     </mat-menu>
 
-    <button
-      mat-icon-button
-      class="search button"
-      [routerLinkActiveOptions]="{exact: true}"
-      [routerLink]="'/shoppingCart' | localize"
-      routerLinkActive="active">
-      <span class="material-icons black"> shopping_cart </span>
-    </button>
+    <mat-menu #travelMenu="matMenu">
+      <div *ngFor="let item of travelMenuList">
+        <button
+          mat-menu-item
+          [routerLinkActiveOptions]="{exact: true}"
+          [routerLink]="item.path| localize"
+          routerLinkActive="active">
+          <span> {{item.title | translate}}</span>
+        </button>
+      </div>
+    </mat-menu>
   </mat-toolbar>
 </div>
