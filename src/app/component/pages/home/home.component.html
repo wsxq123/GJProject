@@ -1,10 +1,12 @@
 <div class="homeComponentContainer">
-  <div class="slideShowContainer">
+  <div
+    class="slideShowContainer"
+    style="display: flex; justify-content: center">
     <img
       mat-card-image
       [src]="slideShowUrlList[currentSlideShowNum]"
       alt="SideShowImg"
-      style="margin-top: 110px" />
+      style="margin-top: 110px; width: 80%" />
   </div>
   <!-- <button (click)="changeSlideShow()">change</button> -->
   <app-interval-block />

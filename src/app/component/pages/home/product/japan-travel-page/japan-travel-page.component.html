@@ -1,0 +1,35 @@
+<div style="display: flex; flex-direction: column; align-items: center">
+  <div style="width: 80%">
+    <app-interval-block />
+    <div>
+      <p style="white-space: pre-line; font-size: 35px; line-height: normal">
+        {{title}}
+      </p>
+    </div>
+    <div style="display: flex; margin-top: 30px">
+      <div style="width: 80%">
+        <img [src]="travelMainImgUrl" alt="travelMainImg" style="width: 100%" />
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 50%;
+        ">
+        <h2 style="white-space: pre-line; margin-bottom: 30px">{{mainText}}</h2>
+        <div>
+          <button mat-stroked-button style="margin-right: 30px">
+            詳細行程
+          </button>
+          <button mat-stroked-button>報名</button>
+        </div>
+      </div>
+    </div>
+    <img
+      [src]="travelBannerImgUrl"
+      alt="travelMainImg"
+      style="width: 100%; margin-top: 60px" />
+  </div>
+</div>

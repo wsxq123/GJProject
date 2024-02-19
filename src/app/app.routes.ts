@@ -3,9 +3,9 @@ import { HomeComponent } from './component/pages/home/home.component';
 import { LoginComponent } from './component/pages/login/login.component';
 import { ShoppingCartComponent } from './component/pages/shopping-cart/shopping-cart.component';
 import { AboutPageComponent } from './component/pages/home/about-page/about-page.component';
-import { KoreaTravelPageComponent } from './component/pages/home/product-page/korea-travel-page/korea-travel-page.component';
-import { EuropeTravelPageComponent } from './component/pages/home/product-page/europe-travel-page/europe-travel-page.component';
-import { JapanTravelPageComponent } from './component/pages/home/product-page/japan-travel-page/japan-travel-page.component';
+import { KoreaTravelPageComponent } from './component/pages/home/product/korea-travel-page/korea-travel-page.component';
+import { EuropeTravelPageComponent } from './component/pages/home/product/europe-travel-page/europe-travel-page.component';
+import { JapanTravelPageComponent } from './component/pages/home/product/japan-travel-page/japan-travel-page.component';
 
 export const routes: Routes = [
   {
