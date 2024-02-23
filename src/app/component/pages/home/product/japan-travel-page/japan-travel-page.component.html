@@ -1,35 +1,91 @@
 <div style="display: flex; flex-direction: column; align-items: center">
   <div style="width: 80%">
+    <app-product-top-block [travelLocation]="travelLocation" />
     <app-interval-block />
-    <div>
-      <p style="white-space: pre-line; font-size: 35px; line-height: normal">
-        {{title}}
-      </p>
+    <app-product-title [titleText]="titileList[0]" />
+    <app-interval-block />
+
+    <app-travel-spot-block
+      [blockType]="1"
+      [title]="highLightsTitle1"
+      [content]="highLightsContent1"
+      [imgUrl1]="highLightsImgUrl1" />
+
+    <h1 style="text-align: center; margin: 70px">{{highLightsContent2}}</h1>
+
+    <app-travel-spot-block
+      [blockType]="0"
+      [imgUrl1]="highLightsImgUrl2"
+      [imgUrl2]="highLightsImgUrl3" />
+
+    <app-travel-spot-block
+      [blockType]="1"
+      [imgUrl1]="highLightsImgUrl4"
+      [title]="highLightsTitle3"
+      [content]="highLightsContent3"
+      [isNeedSpace]="true" />
+
+    <app-interval-block />
+    <app-product-title [titleText]="titileList[1]" />
+    <app-interval-block />
+
+    <app-travel-spot-block
+      [blockType]="0"
+      [imgUrl1]="sightsImagUrl1"
+      [imgUrl2]="sightsImagUrl2" />
+
+    <div style="margin: 70px; padding: 0 100px">
+      <h2>{{sightsTitle1}}</h2>
+      <h4>{{sightsContent1}}</h4>
     </div>
-    <div style="display: flex; margin-top: 30px">
-      <div style="width: 80%">
-        <img [src]="travelMainImgUrl" alt="travelMainImg" style="width: 100%" />
-      </div>
-      <div
-        style="
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          width: 50%;
-        ">
-        <h2 style="white-space: pre-line; margin-bottom: 30px">{{mainText}}</h2>
-        <div>
-          <button mat-stroked-button style="margin-right: 30px">
-            詳細行程
-          </button>
-          <button mat-stroked-button>報名</button>
-        </div>
+    <div style="display: flex; justify-content: center">
+      <img
+        [src]="sightsImagUrl3"
+        alt="sightsImagUrl3"
+        style="width: 450px; margin: 20px" />
+      <div style="display: flex; flex-direction: column; padding: 10px">
+        <img
+          [src]="sightsImagUrl4"
+          alt="sightsImagUrl4"
+          style="width: 450px; margin: 10px" />
+        <img
+          [src]="sightsImagUrl5"
+          alt="sightsImagUrl5"
+          style="width: 450px; margin: 10px" />
       </div>
     </div>
-    <img
-      [src]="travelBannerImgUrl"
-      alt="travelMainImg"
-      style="width: 100%; margin-top: 60px" />
+
+    <app-interval-block />
+    <app-product-title [titleText]="titileList[2]" />
+    <app-interval-block />
+
+    <app-travel-spot-block
+      [blockType]="0"
+      [imgUrl1]="experienceImgUrl1"
+      [imgUrl2]="experienceImgUrl2" />
+
+    <div style="margin: 70px; padding: 0 100px">
+      <h2>{{experienceTitle1}}</h2>
+      <h4>{{experienceContent1}}</h4>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <img
+        [src]="experienceImgUrl3"
+        alt="experienceImgUrl3"
+        style="width: 450px; margin: 20px" />
+      <div style="display: flex; flex-direction: column; padding: 10px">
+        <img
+          [src]="experienceImgUrl4"
+          alt="experienceImgUrl4"
+          style="width: 450px; margin: 10px" />
+        <img
+          [src]="experienceImgUrl5"
+          alt="experienceImgUrl5"
+          style="width: 450px; margin: 10px" />
+      </div>
+    </div>
+    <app-interval-block />
+    <app-special-note [travelLocation]="travelLocation" />
+    <app-interval-block />
   </div>
 </div>

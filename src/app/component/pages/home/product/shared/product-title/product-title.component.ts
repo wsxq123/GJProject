@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-title',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './product-title.component.html',
 })
-export class ProductTitleComponent {}
+export class ProductTitleComponent {
+  @Input() titleText: string = '';
+  yellowRoundUrl = 'assets/image/YellowRoundImg.png';
+}
