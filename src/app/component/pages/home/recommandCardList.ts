@@ -3,67 +3,67 @@ import { recommandCardItem } from './recommandCardType';
 export const recommandCardList: recommandCardItem[] = [
   {
     travelCommand: 'JapenTravelCommand',
-    content: '春櫻四國松山',
+    content: 'JapenTravelContent',
     locationList: [
       {
         url: 'assets/image/homePage/JapenImg01.png',
-        content: '◆紫雲出山',
+        content: 'JapenLocation01',
       },
       {
         url: 'assets/image/homePage/JapenImg02.png',
-        content: '◆金刀比羅宮',
+        content: 'JapenLocation02',
       },
       {
         url: 'assets/image/homePage/JapenImg03.png',
-        content: '◆道後溫泉街',
+        content: 'JapenLocation03',
       },
       {
         url: 'assets/image/homePage/JapenImg04.png',
-        content: '◆讚歧烏龍麵DIY體驗',
+        content: 'JapenLocation04',
       },
     ],
   },
   {
     travelCommand: 'KoreaTravelCommand',
-    content: '花現釜山鎮海',
+    content: 'KoreaTravelContent',
     locationList: [
       {
         url: 'assets/image/homePage/KoreaImg01.png',
-        content: '◆海雲台濱海列車',
+        content: 'KoreaLocation01',
       },
       {
         url: 'assets/image/homePage/KoreaImg02.png',
-        content: '◆穿韓服遊古宅',
+        content: 'KoreaLocation02',
       },
       {
         url: 'assets/image/homePage/KoreaImg03.png',
-        content: '◆大邱 E WORLD',
+        content: 'KoreaLocation03',
       },
       {
         url: 'assets/image/homePage/KoreaImg04.png',
-        content: '◆【明倫進士】韓式烤肉吃到飽',
+        content: 'KoreaLocation04',
       },
     ],
   },
   {
     travelCommand: 'EuropeTravelCommand',
-    content: '旗艦義大利送杜拜',
+    content: 'EuropeTravelContent',
     locationList: [
       {
         url: 'assets/image/homePage/EuropeImg01.png',
-        content: '◆絕美威尼斯',
+        content: 'EuropeLocation01',
       },
       {
         url: 'assets/image/homePage/EuropeImg02.png',
-        content: '◆聖彼得大教堂登頂體驗',
+        content: 'EuropeLocation02',
       },
       {
         url: 'assets/image/homePage/EuropeImg03.png',
-        content: '◆杜拜帆船酒店',
+        content: 'EuropeLocation03',
       },
       {
         url: 'assets/image/homePage/EuropeImg04.png',
-        content: '◆米其林一星丁骨牛排',
+        content: 'EuropeLocation04',
       },
     ],
   },

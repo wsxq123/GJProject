@@ -1,7 +1,7 @@
 <app-interval-block />
 <div>
   <p style="white-space: pre-line; font-size: 35px; line-height: normal">
-    {{productTopBlockContent.title}}
+    {{productTopBlockContent.title | translate}}
   </p>
 </div>
 <div style="display: flex; margin-top: 30px">
@@ -20,19 +20,37 @@
       width: 50%;
     ">
     <div style="white-space: pre-line; margin-bottom: 30px">
-      <h2>產品代碼：{{productTopBlockContent.travelInfo.productCode}}</h2>
-      <h2>去程：{{productTopBlockContent.travelInfo.startDate}}</h2>
-      <h2>回程：{{productTopBlockContent.travelInfo.endDate}}</h2>
-      <h2>共{{productTopBlockContent.travelInfo.travelDays}}天</h2>
+      <h2>
+        {{'JPTOURCODE' | translate}}:
+        {{productTopBlockContent.travelInfo.productCode}}
+      </h2>
+      <h2>
+        {{'JPDEPARTUREDATE'|translate}}:{{productTopBlockContent.travelInfo.startDate}}
+      </h2>
+      <h2>
+        {{'JPRETURNDATE'|translate}}:{{productTopBlockContent.travelInfo.endDate}}
+      </h2>
+      <h2>{{productTopBlockContent.travelInfo.travelDays}} Days</h2>
       <br />
-      <h2>成人：{{productTopBlockContent.travelInfo.adultTicketPrice}}</h2>
-      <h2>兒童：{{productTopBlockContent.travelInfo.childrenTicketPrice}}</h2>
+      <h2>
+        {{'JPADULTPRICE'|translate}}:{{productTopBlockContent.travelInfo.adultTicketPrice}}
+      </h2>
+      <h2>
+        {{'JPCHILDPRICE'|translate}}:{{productTopBlockContent.travelInfo.childrenTicketPrice}}
+      </h2>
     </div>
     <div>
       <button mat-stroked-button style="margin-right: 30px; font-size: 18px">
-        詳細行程
+        {{'ITINERARY'|translate}}
       </button>
-      <button mat-stroked-button style="font-size: 18px">報名</button>
+      <button
+        mat-stroked-button
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="path| localize"
+        routerLinkActive="active"
+        style="font-size: 18px">
+        {{'SIGNUP'|translate}}
+      </button>
     </div>
   </div>
 </div>

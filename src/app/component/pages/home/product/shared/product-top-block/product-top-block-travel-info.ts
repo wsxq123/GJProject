@@ -20,8 +20,7 @@ export type travelLocationType = {
 
 export const productTopBlockContent: travelLocationType = {
   japen: {
-    title:
-      '春櫻四國松山｜紫雲出山~賞櫻仙境,櫻名勝栗林公園,\n櫻百選松山城,父母之濱,遊船,採草莓,道後溫泉,魔女小豆島五日',
+    title: 'JPTOURTITLE',
     mainImgurl: 'assets/image/japenTravelPage/TravelMainImg.png',
     travelInfo: {
       productCode: '24JY324BRM-T',
@@ -34,8 +33,7 @@ export const productTopBlockContent: travelLocationType = {
     bannerImgurl: 'assets/image/japenTravelPage/TravelBannerImg.png',
   },
   korea: {
-    title:
-      '花現釜山鎮海旅遊｜鎮海櫻花,羅曼史橋慶和站櫻花,\n海雲台列車,EWORLD櫻花季,釜山櫻花隧道(一站購物彩妝)四日',
+    title: 'KRTOURTITLE',
     mainImgurl: 'assets/image/koreaTravelPage/TravelMainImg.png',
     travelInfo: {
       productCode: '24JK3277CG-T',
@@ -48,8 +46,7 @@ export const productTopBlockContent: travelLocationType = {
     bannerImgurl: 'assets/image/koreaTravelPage/TravelBannerImg.png',
   },
   europe: {
-    title:
-      '旗艦義大利送杜拜│威尼斯本島連泊,雙博物館巡禮,\n南北絕美雙島,阿瑪菲海岸,帆船饗宴,杜拜五星免小費12日',
+    title: 'EUTOURTITLE',
     mainImgurl: 'assets/image/europeTravelPage/TravelMainImg.png',
     travelInfo: {
       productCode: '24EI404EK-T',

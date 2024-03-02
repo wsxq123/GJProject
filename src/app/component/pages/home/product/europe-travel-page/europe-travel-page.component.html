@@ -7,7 +7,7 @@
     <app-interval-block />
 
     <div style="display: flex; justify-content: center">
-      <h3 style="white-space: pre-line">{{highLightsContent}}</h3>
+      <h3 style="white-space: pre-line">{{highLightsContent | translate}}</h3>
     </div>
     <div style="display: flex; justify-content: center">
       <img
@@ -24,11 +24,13 @@
       <img [src]="sightsTitleImgUrl1" alt="sightsImgUrl0" />
     </div>
     <div style="display: flex; justify-content: center; margin-top: 10px">
-      <h1 style="font-size: 48px">{{sightsTitle1}}</h1>
+      <h1 style="font-size: 48px; line-height: normal; white-space: pre-line">
+        {{sightsTitle1 | translate}}
+      </h1>
     </div>
 
     <div style="display: flex; justify-content: center; margin-top: 70px">
-      <h3 style="white-space: pre-line">{{sightsContent1}}</h3>
+      <h3 style="white-space: pre-line">{{sightsContent1 | translate}}</h3>
     </div>
 
     <app-travel-spot-block
@@ -44,7 +46,9 @@
         margin-top: 70px;
         align-items: center;
       ">
-      <h1 style="white-space: pre-line; font-size: 72px">{{sightsTitle2}}</h1>
+      <h1 style="white-space: pre-line; font-size: 72px">
+        {{sightsTitle2 | translate}}
+      </h1>
       <img [src]="sightsTitleImgUrl2" alt="sightsTitleImgUrl2" />
     </div>
 
@@ -64,7 +68,7 @@
     </div>
 
     <div style="display: flex; justify-content: center; margin-top: 70px">
-      <h3 style="white-space: pre-line">{{sightsContent3}}</h3>
+      <h3 style="white-space: pre-line">{{sightsContent3 | translate}}</h3>
     </div>
 
     <div style="display: flex; justify-content: center; margin-top: 70px">
@@ -76,7 +80,9 @@
     <app-interval-block />
 
     <div style="display: flex; justify-content: center; margin-top: 70px">
-      <h3 style="white-space: pre-line">{{accommodationContent}}</h3>
+      <h3 style="white-space: pre-line">
+        {{accommodationContent | translate}}
+      </h3>
     </div>
 
     <app-interval-block />
@@ -84,7 +90,7 @@
     <app-interval-block />
 
     <div style="display: flex; justify-content: center; margin-top: 70px">
-      <h3 style="white-space: pre-line">{{foodContent1}}</h3>
+      <h3 style="white-space: pre-line">{{foodContent1 | translate}}</h3>
     </div>
 
     <div style="display: flex; justify-content: center; margin-top: 70px">
@@ -95,9 +101,9 @@
           justify-content: center;
           padding: 120px;
         ">
-        <h2>{{foodTitle2}}</h2>
+        <h2>{{foodTitle2 | translate}}</h2>
         <img [src]="foodImgUrl0" alt="foodImgUrl0" style="margin: 40px 0px" />
-        <h3 style="white-space: pre-line">{{foodContent2}}</h3>
+        <h3 style="white-space: pre-line">{{foodContent2 | translate}}</h3>
       </div>
       <img [src]="foodImgUrl1" alt="foodImgUrl1" />
     </div>
@@ -123,7 +129,7 @@
 
     <div style="display: flex; justify-content: center; margin-top: 70px">
       <h3 style="white-space: pre-line; text-align: center">
-        {{dubaiContent1}}
+        {{dubaiContent1 | translate}}
       </h3>
     </div>
 
@@ -145,8 +151,8 @@
           justify-content: center;
           margin: 0px 70px 0px 20px;
         ">
-        <h2>{{dubaiTitle2}}</h2>
-        <h3>{{dubaiContent2}}</h3>
+        <h2>{{dubaiTitle2 | translate}}</h2>
+        <h3>{{dubaiContent2 | translate}}</h3>
         <img [src]="dubaiImgUrl2" alt="dubaiImgUrl2" style="margin-top: 70px" />
       </div>
 

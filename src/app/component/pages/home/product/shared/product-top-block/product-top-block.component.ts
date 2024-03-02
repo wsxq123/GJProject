@@ -4,17 +4,28 @@ import {
   productTopBlockContent,
   productTopBlockType,
 } from './product-top-block-travel-info';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-top-block',
   standalone: true,
   templateUrl: './product-top-block.component.html',
   styleUrl: './product-top-block.component.scss',
-  imports: [IntervalBlockComponent],
+  imports: [
+    IntervalBlockComponent,
+    RouterLinkActive,
+    RouterLink,
+    LocalizeRouterModule,
+    TranslateModule,
+  ],
 })
 export class ProductTopBlockComponent implements OnInit {
   @Input() travelLocation: string = '';
   productTopBlockContent!: productTopBlockType;
+
+  path = '/shoppingCart';
 
   ngOnInit(): void {
     console.log(this.travelLocation);

@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { noteContnet, noteContnetType } from './special-note-content';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-special-note',
   standalone: true,
-  imports: [MatDividerModule],
+  imports: [MatDividerModule, TranslateModule],
   templateUrl: './special-note.component.html',
 })
 export class SpecialNoteComponent implements OnInit {

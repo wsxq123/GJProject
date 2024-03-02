@@ -13,7 +13,7 @@
       *ngFor="let ftl of footerTextList ; let i = index"
       style="display: flex; flex-grow: 1">
       <div style="flex-grow: 1">
-        <p style="font-weight: bold">{{ftl.title}}</p>
+        <p style="font-weight: bold">{{ftl.title | translate}}</p>
 
         <div *ngFor="let tl of ftl.textList ">
           <button
@@ -22,13 +22,13 @@
             [routerLinkActiveOptions]="{exact: true}"
             [routerLink]="tl.path| localize"
             routerLinkActive="active">
-            {{tl.text}}
+            {{tl.text | translate}}
           </button>
           <a mat-button *ngIf="!tl.path && i === 0" href="mailto:abc@gmail.com">
-            {{tl.text}}
+            {{tl.text | translate}}
           </a>
 
-          <p *ngIf="i === 1">{{tl.text}}</p>
+          <p *ngIf="i === 1">{{tl.text | translate}}</p>
         </div>
       </div>
     </div>

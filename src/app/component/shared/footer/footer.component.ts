@@ -4,6 +4,7 @@ import { LogoBtnComponent } from '../logo-btn/logo-btn.component';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
@@ -17,6 +18,7 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
     RouterLink,
     RouterLinkActive,
     LocalizeRouterModule,
+    TranslateModule,
   ],
 })
 export class FooterComponent {
@@ -26,19 +28,19 @@ export class FooterComponent {
 
   footerTextList = [
     {
-      title: '服務',
+      title: 'SERVE',
       textList: [
-        { text: '關於我們', path: '/about' },
-        { text: '旅遊行程', path: '/product/japanTravel' },
-        { text: '聯繫我們' },
+        { text: 'ABOUTUS', path: '/about' },
+        { text: 'TRAVEL', path: '/product/japanTravel' },
+        { text: 'CONTACTUS' },
       ],
     },
     {
-      title: '資訊',
+      title: 'INFORMATION',
       textList: [
-        { text: '地址: 10041台北市中正區公園路30號3樓' },
-        { text: '代表人: Lillian Lin' },
-        { text: '電話: 123 456 7890' },
+        { text: 'ADDRESS' },
+        { text: 'REPRESENTATIVE' },
+        { text: 'Phone' },
         { text: 'Email: OptimalSealTravel@gmail.com' },
       ],
     },

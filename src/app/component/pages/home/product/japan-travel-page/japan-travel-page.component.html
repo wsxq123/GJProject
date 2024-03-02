@@ -11,7 +11,9 @@
       [content]="highLightsContent1"
       [imgUrl1]="highLightsImgUrl1" />
 
-    <h1 style="text-align: center; margin: 70px">{{highLightsContent2}}</h1>
+    <h1 style="text-align: center; margin: 70px; white-space: pre-line">
+      {{highLightsContent2 | translate}}
+    </h1>
 
     <app-travel-spot-block
       [blockType]="0"
@@ -35,8 +37,8 @@
       [imgUrl2]="sightsImagUrl2" />
 
     <div style="margin: 70px; padding: 0 100px">
-      <h2>{{sightsTitle1}}</h2>
-      <h4>{{sightsContent1}}</h4>
+      <h2>{{sightsTitle1 | translate}}</h2>
+      <h4>{{sightsContent1 | translate}}</h4>
     </div>
     <div style="display: flex; justify-content: center">
       <img
@@ -65,8 +67,8 @@
       [imgUrl2]="experienceImgUrl2" />
 
     <div style="margin: 70px; padding: 0 100px">
-      <h2>{{experienceTitle1}}</h2>
-      <h4>{{experienceContent1}}</h4>
+      <h2>{{experienceTitle1 | translate}}</h2>
+      <h4>{{experienceContent1 | translate}}</h4>
     </div>
     <div style="display: flex; justify-content: center">
       <img

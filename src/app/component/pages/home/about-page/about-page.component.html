@@ -23,10 +23,10 @@
             [src]="starIconUrl"
             alt="starIcon"
             style="position: absolute; left: -65px; top: -65px" />
-          About us
+          {{bannerTitleList[0] | translate}}
         </h1>
         <hr />
-        <h2 style="white-space: pre-line">{{bannerText}}</h2>
+        <h2 style="white-space: pre-line">{{bannerText | translate}}</h2>
       </div>
       <div style="flex-grow: 1; margin-left: 80px">
         <img [src]="bannerImgUrl" alt="bannerImgUrl" />
@@ -43,14 +43,17 @@
           [src]="starIconUrl"
           alt="starIcon"
           style="position: absolute; left: -65px; top: -65px" />
-        宣傳片
+        {{bannerTitleList[1] | translate}}
       </h1>
       <div>
         <iframe
-          width="420"
+          width="560"
           height="315"
-          src="https://www.youtube.com/embed/tgbNymZ7vqY">
-        </iframe>
+          src="https://www.youtube.com/embed/qMQ-y9dHE2k?si=_-aYl8QkWfsccx5D"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       </div>
     </div>
 
@@ -62,7 +65,7 @@
           [src]="starIconUrl"
           alt="starIcon"
           style="position: absolute; left: -65px; top: -65px" />
-        旅程世界分布
+        {{bannerTitleList[2] | translate}}
       </h1>
       <iframe
         src="https://www.google.com/maps/d/u/0/embed?mid=1Wk3AGRY4WwbeQj-f-bP4j6cbJBQdH-E&ehbc=2E312F&noprof=1"
@@ -78,7 +81,7 @@
           [src]="starIconUrl"
           alt="starIcon"
           style="position: absolute; left: -65px; top: -65px" />
-        台灣服務據點
+        {{bannerTitleList[3] | translate}}
       </h1>
       <table mat-table [dataSource]="serviceBaseList">
         <ng-container matColumnDef="name">
