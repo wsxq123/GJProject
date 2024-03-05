@@ -6,6 +6,7 @@ import { AboutPageComponent } from './component/pages/home/about-page/about-page
 import { KoreaTravelPageComponent } from './component/pages/home/product/korea-travel-page/korea-travel-page.component';
 import { EuropeTravelPageComponent } from './component/pages/home/product/europe-travel-page/europe-travel-page.component';
 import { JapanTravelPageComponent } from './component/pages/home/product/japan-travel-page/japan-travel-page.component';
+import { TravelListPageComponent } from './component/pages/home/product/travel-list-page/travel-list-page.component';
 
 export const routes: Routes = [
   {
@@ -42,5 +43,10 @@ export const routes: Routes = [
     path: 'shoppingCart',
     title: 'shoppingCart page',
     component: ShoppingCartComponent,
+  },
+  {
+    path: 'travelList',
+    title: 'travelList page',
+    component: TravelListPageComponent,
   },
 ];
