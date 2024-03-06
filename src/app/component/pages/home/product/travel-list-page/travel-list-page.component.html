@@ -1,11 +1,19 @@
 <app-interval-block />
-
-<div style="display: flex; flex-direction: column; align-items: center">
-  <div style="width: 80%" *ngFor="let item of dataArray;let i = index">
-    <app-travel-list-item [travelListItem]="item" />
-    <mat-divider
-      style="margin: 25px 0px"
-      [style.display]="i === dataArray.length-1? 'none':'block'"></mat-divider>
+<div style="display: flex; justify-content: center">
+  <div style="width: 80%; display: flex; justify-content: center">
+    <div style="width: 30%">
+      <div style="width: 180px; height: 250px; border: 1px solid lightgray">
+        HI
+      </div>
+    </div>
+    <div style="width: 70%">
+      <div *ngFor="let item of dataArray;let i = index">
+        <app-travel-list-item [travelListItem]="item" />
+        <mat-divider
+          style="margin: 25px 0px; border: 1px solid lightgray"
+          [style.display]="i === dataArray.length-1? 'none':'block'"></mat-divider>
+      </div>
+    </div>
   </div>
 </div>
 <app-interval-block />
