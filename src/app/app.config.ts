@@ -58,5 +58,7 @@ export const appConfig: ApplicationConfig = {
       useFactory: initializeDirectionFactory,
       multi: true,
     },
+    provideAnimationsAsync(),
+    provideAnimationsAsync(),
   ],
 };
