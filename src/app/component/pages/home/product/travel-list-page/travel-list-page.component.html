@@ -1,9 +1,47 @@
 <app-interval-block />
 <div style="display: flex; justify-content: center">
-  <div style="width: 80%; display: flex; justify-content: center">
+  <div
+    style="
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    ">
     <div style="width: 30%">
-      <div style="width: 180px; height: 250px; border: 1px solid lightgray">
-        HI
+      <div
+        style="
+          width: 250px;
+          height: 250px;
+          border-bottom: 2px solid lightgray;
+          position: fixed;
+          display: flex;
+          flex-direction: column;
+        ">
+        <section class="example-section">
+          <span class="example-list-section">
+            <h3>{{locationCheckBoxList.title| translate}}</h3>
+          </span>
+          <span class="example-list-section">
+            <ul style="list-style-type: none">
+              <li
+                *ngFor="let item of locationCheckBoxList.subCheckBox;let i = index">
+                <mat-checkbox
+                  [(ngModel)]="item.isChecked"
+                  color="primary"
+                  (ngModelChange)="checkBoxCurrentState()">
+                  {{item.location| translate}}
+                </mat-checkbox>
+              </li>
+            </ul>
+          </span>
+        </section>
+        <button
+          mat-raised-button
+          color="primary"
+          style="margin: 0px 40px"
+          (click)="dataArrayFilter()">
+          Apply
+        </button>
       </div>
     </div>
     <div style="width: 70%">
@@ -16,4 +54,5 @@
     </div>
   </div>
 </div>
+<app-interval-block />
 <app-interval-block />

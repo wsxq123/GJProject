@@ -7,7 +7,6 @@
       <button
         mat-flat-button
         *ngIf="hbm.isFlatBtn === true; else iconBtn"
-        [matMenuTriggerFor]="hbm.isMenu? travelMenu:null"
         [color]="(hbm.isWarn)? 'warn':''"
         [routerLinkActiveOptions]="{exact: true}"
         [routerLink]="hbm.path? (hbm.path| localize):null"
@@ -31,6 +30,7 @@
       </ng-template>
     </div>
 
+    <!-- language menu -->
     <mat-menu #menu="matMenu">
       <div *ngFor="let locale of locales">
         <button
@@ -38,18 +38,6 @@
           routerLink="/{{locale[0]}}/{{currentUrl}}"
           routerLinkActive="active">
           <span>{{locale[1]}}</span>
-        </button>
-      </div>
-    </mat-menu>
-
-    <mat-menu #travelMenu="matMenu">
-      <div *ngFor="let item of travelMenuList">
-        <button
-          mat-menu-item
-          [routerLinkActiveOptions]="{exact: true}"
-          [routerLink]="item.path| localize"
-          routerLinkActive="active">
-          <span> {{item.title | translate}}</span>
         </button>
       </div>
     </mat-menu>

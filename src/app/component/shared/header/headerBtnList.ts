@@ -9,9 +9,9 @@ export const headerBtnList: headerBtnItem[] = [
   },
   {
     btnText: 'TRAVEL',
+    path: '/travelList',
     isWarn: false,
     isFlatBtn: true,
-    isMenu: true,
   },
   {
     btnText: 'MEMBER',

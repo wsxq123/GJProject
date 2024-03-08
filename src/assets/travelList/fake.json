@@ -1,5 +1,5 @@
 [
-   {    "area":"japen",
+   {    "area":"JAPAN",
         "title": "JPTOURTITLE",
         "mainImgurl":  "assets/image/japenTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -12,7 +12,7 @@
         }
     },
      {
-        "area":"korea",
+        "area":"KOREA",
         "title": "KRTOURTITLE",
         "mainImgurl":  "assets/image/koreaTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -25,7 +25,7 @@
         }
     },
    {
-        "area":"europe",
+        "area":"EUROPE",
         "title": "EUTOURTITLE",
         "mainImgurl":  "assets/image/europeTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -37,7 +37,7 @@
             "childrenTicketPrice": "169900"
         }
     },
-    {    "area":"japen",
+    {    "area":"JAPAN",
         "title": "JPTOURTITLE",
         "mainImgurl":  "assets/image/japenTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -50,7 +50,7 @@
         }
     },
      {
-        "area":"korea",
+        "area":"KOREA",
         "title": "KRTOURTITLE",
         "mainImgurl":  "assets/image/koreaTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -63,7 +63,7 @@
         }
     },
    {
-        "area":"europe",
+        "area":"EUROPE",
         "title": "EUTOURTITLE",
         "mainImgurl":  "assets/image/europeTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -75,7 +75,7 @@
             "childrenTicketPrice": "169900"
         }
     },
-    {    "area":"japen",
+    {    "area":"JAPAN",
         "title": "JPTOURTITLE",
         "mainImgurl":  "assets/image/japenTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -88,7 +88,7 @@
         }
     },
      {
-        "area":"korea",
+        "area":"KOREA",
         "title": "KRTOURTITLE",
         "mainImgurl":  "assets/image/koreaTravelPage/TravelMainImg.png ",
         "travelInfo": {
@@ -101,7 +101,7 @@
         }
     },
    {
-        "area":"europe",
+        "area":"EUROPE",
         "title": "EUTOURTITLE",
         "mainImgurl":  "assets/image/europeTravelPage/TravelMainImg.png ",
         "travelInfo": {
