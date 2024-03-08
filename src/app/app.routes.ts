@@ -70,4 +70,14 @@ export const routes: Routes = [
     title: 'shoppingCart page',
     component: ShoppingCartComponent,
   },
+  {
+    path: 'memberlist',
+    title: 'memberlist page',
+    component: MemberlistComponent,
+  },
+  {
+    path: 'travelList',
+    title: 'travelList page',
+    component: TravelListPageComponent,
+  },
 ];
