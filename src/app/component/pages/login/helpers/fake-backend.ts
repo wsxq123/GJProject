@@ -29,7 +29,7 @@ export function fakeBackendInterceptor(
       case url.endsWith('/users') && method === 'GET':
         return getUsers();
       case url.match(/\/users\/\d+$/) && method === 'GET':
-        return getUserById();
+        return getById();
       case url.match(/\/users\/\d+$/) && method === 'PUT':
         return updateUser();
       case url.match(/\/users\/\d+$/) && method === 'DELETE':
@@ -43,9 +43,10 @@ export function fakeBackendInterceptor(
   // route functions
 
   function authenticate() {
-    const { username, password } = body;
+    const { memberAccount, memberPassword } = body;
     const user = users.find(
-      (x) => x.username === username && x.password === password
+      (x) =>
+        x.memberAccount === memberAccount && x.memberPassword === memberPassword
     );
     if (!user) return error('Username or password is incorrect');
     return ok({
@@ -75,7 +76,7 @@ export function fakeBackendInterceptor(
     return ok(users.map((x) => basicDetails(x)));
   }
 
-  function getUserById() {
+  function getById() {
     if (!isLoggedIn()) return unauthorized();
 
     const user = users.find((x) => x.id === idFromUrl());

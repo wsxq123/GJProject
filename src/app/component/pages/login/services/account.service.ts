@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../../../../environment/environment';
 import { User } from '../models';
@@ -26,21 +26,38 @@ export class AccountService {
     return this.userSubject.value;
   }
 
-  login(username: string, password: string) {
+  login(memberAccount: string, memberPassword: string): Observable<boolean> {
     return this.http
-      .post<User>(`${environment.appUrl}/users/authenticate`, {
-        username,
-        password,
+      .post<User>(`${environment.appUrl}authenticate`, {
+        memberAccount,
+        memberPassword,
       })
       .pipe(
-        map((user) => {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
+        map((user: User) => {
+          // Handle successful login, if needed
           localStorage.setItem('user', JSON.stringify(user));
-          this.userSubject.next(user);
-          return user;
+          return true;
+        }),
+        catchError((error: Error) => {
+          // Handle login error
+          console.error('Login error:', error);
+          throw error; // Rethrow the error to be caught by the component
         })
       );
   }
+
+  //return this.http;
+  //.post<User>(`${environment.appUrl}/authenticate`, {
+  //memberAccount,
+  //memberPassword,
+  //}).pipe(
+  //map((user) => {
+  // store user details and jwt token in local storage to keep user logged in between page refreshes
+  //localStorage.setItem('user', JSON.stringify(user));
+  //console.this.userSubject.next(user);
+  //return user;
+  //})
+  //);
 
   logout() {
     // remove user from local storage and set current user to null
@@ -54,11 +71,7 @@ export class AccountService {
   }
 
   getAll() {
-    return this.http.get<User[]>(`${environment.appUrl}/users`);
-  }
-
-  getById(id: string) {
-    return this.http.get<User>(`${environment.appUrl}/users/${id}`);
+    return this.http.get<User[]>(`${environment.appUrl}/members`);
   }
 
   getuserrole() {

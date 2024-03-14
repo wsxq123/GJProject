@@ -2,7 +2,7 @@ export class User {
   memberId?: string;
   memberName?: string;
   memberAccount?: string;
-  password?: string;
+  memberPassword?: string;
   confirmPassword?: string;
   memberEmail?: string;
   memberPhone?: string;

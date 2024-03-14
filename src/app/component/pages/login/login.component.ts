@@ -8,7 +8,6 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 import { AccountService } from './services/account.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,15 +43,15 @@ export class LoginComponent implements OnInit {
     private accountService: AccountService
   ) {
     // redirect to home if already logged in
-    if (this.accountService.userValue) {
-      this.router.navigate(['/']);
-    }
+    //if (this.accountService.userValue) {
+    //this.router.navigate(['/']);
+    //}
   }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      memberAccount: ['', Validators.required],
+      memberPassword: ['', Validators.required],
     });
 
     // show success message after registration
@@ -69,29 +68,37 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // reset alerts on submit
-    this.error = '';
-    this.success = '';
-
-    // stop here if form is invalid
     if (this.form.invalid) {
       console.log('Form is invalid');
+      return;
     }
 
     this.loading = true;
+
+    console.log('Member Account:', this.f['memberAccount'].value);
+    console.log('Member Password:', this.f['memberPassword'].value);
+
     this.accountService
-      .login(this.f['username'].value, this.f['password'].value)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          // get return url from query parameters or default to home page
-          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-          this.router.navigateByUrl(returnUrl);
-        },
-        error: (error) => {
-          this.error = error;
-          this.loading = false;
-        },
+      .login(this.f['memberAccount'].value, this.f['memberPassword'].value)
+      .subscribe((loggedIn: boolean) => {
+        if (loggedIn) {
+          this.router.navigateByUrl('/profile');
+        } else {
+          console.log('Please try again');
+        }
       });
   }
 }
+
+//.pipe(first())
+//.subscribe({
+//next: () => {
+// get return url from query parameters or default to home page
+//const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+//this.router.navigateByUrl(returnUrl);
+//},
+//error: (error) => {
+//this.error = error;
+//this.loading = false;
+//},
+//});
