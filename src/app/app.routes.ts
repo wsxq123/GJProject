@@ -11,6 +11,9 @@ import { ForgetPasswordComponent } from './component/pages/login/forgetpassword.
 import { ResetpasswordComponent } from './component/pages/login/resetpassword/resetpassword.component';
 import { UserprofileComponent } from './component/pages/login/userprofile/userprofile.component';
 import { MemberlistComponent } from './component/pages/login/adminpage/memberlist.component';
+import { ProfileComponent } from './component/pages/login/profiles/profile.component';
+import { TravelListPageComponent } from './component/pages/home/product/travel-list-page/travel-list-page.component';
+import { OrdersComponent } from './component/pages/login/orders/orders.component';
 
 export const routes: Routes = [
   {
@@ -60,9 +63,9 @@ export const routes: Routes = [
     component: ResetpasswordComponent,
   },
   {
-    path: 'userprofile',
-    title: 'userprofile page',
-    component: UserprofileComponent,
+    path: 'profiles/:memberId',
+    title: 'profile page',
+    component: ProfileComponent,
   },
   {
     path: 'shoppingCart',
@@ -70,8 +73,8 @@ export const routes: Routes = [
     component: ShoppingCartComponent,
   },
   {
-    path: 'memberlist',
-    title: 'memberlist page',
-    component: MemberlistComponent,
+    path: 'orders',
+    title: 'orderlist page',
+    component: OrdersComponent,
   },
 ];

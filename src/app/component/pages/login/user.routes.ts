@@ -5,7 +5,7 @@ import { HomeComponent } from '../home/home.component';
 import { authGuard } from './helpers/auth.guard';
 import { ForgetPasswordComponent } from './forgetpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
-import { UserprofileComponent } from './userprofile/userprofile.component';
+import { ProfileComponent } from './profiles/profile.component';
 
 //const usersRoutes = () =>
 //import('./users/user.routes').then((x) => x.USERS_ROUTES);
@@ -18,9 +18,9 @@ export const APP_ROUTES: Routes = [
   { path: 'forgetpassword', component: ForgetPasswordComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
   {
-    path: 'userprofile',
-    component: UserprofileComponent,
-    canActivate: [authGuard],
+    path: 'travelweb/members/:memberId',
+    component: ProfileComponent,
+    //canActivate: [authGuard],
   },
 
   // otherwise redirect to home
