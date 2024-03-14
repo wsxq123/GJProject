@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemberApiComponent } from './member-api.component';
+import { AdminMemberComponent } from './admin-member.component';
 
-describe('MemberApiComponent', () => {
-  let component: MemberApiComponent;
-  let fixture: ComponentFixture<MemberApiComponent>;
+describe('AdminMemberComponent', () => {
+  let component: AdminMemberComponent;
+  let fixture: ComponentFixture<AdminMemberComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MemberApiComponent],
+      imports: [AdminMemberComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MemberApiComponent);
+    fixture = TestBed.createComponent(AdminMemberComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
