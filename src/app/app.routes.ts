@@ -10,8 +10,9 @@ import { RegisterComponent } from './component/pages/login/register.component';
 import { ForgetPasswordComponent } from './component/pages/login/forgetpassword.component';
 import { ResetpasswordComponent } from './component/pages/login/resetpassword/resetpassword.component';
 import { UserprofileComponent } from './component/pages/login/userprofile/userprofile.component';
-import { MemberlistComponent } from './component/pages/login/adminpage/memberlist.component';
+import { MemberlistComponent } from './component/pages/login/memberListPage/memberlist.component';
 import { TravelListPageComponent } from './component/pages/home/product/travel-list-page/travel-list-page.component';
+import { AdminPageComponent } from './component/pages/login/admin-page/admin-page.component';
 
 export const routes: Routes = [
   {
@@ -79,5 +80,10 @@ export const routes: Routes = [
     path: 'travelList',
     title: 'travelList page',
     component: TravelListPageComponent,
+  },
+  {
+    path: 'admin',
+    title: 'admin page',
+    component: AdminPageComponent,
   },
 ];

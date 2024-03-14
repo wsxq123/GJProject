@@ -1,0 +1,35 @@
+[
+    {
+    "orderId":"1",
+    "memberId":"2",
+    "productCode":"JP11",
+    "productName":"日本三天兩夜",
+    "startDate":"2024/03/24 (日)",
+    "endDate":"2024/03/28 (四)" ,
+    "productAmountAdult":"2",
+    "productAmountChild":"2",
+    "productTotalPrice":"3600"
+    },
+    {
+        "orderId":"2",
+        "memberId":"2",
+        "productCode":"KR12",
+        "productName":"韓國三天兩夜",
+        "startDate":"2024/03/24 (日)",
+        "endDate":"2024/03/28 (四)" ,
+        "productAmountAdult":"5",
+        "productAmountChild":"4",
+        "productTotalPrice":"9890"
+    },
+    {
+        "orderId":"3",
+        "memberId":"2",
+        "productCode":"EU13",
+        "productName":"歐洲三天兩夜",
+        "startDate":"2024/03/24 (日)",
+        "endDate":"2024/03/28 (四)" ,
+        "productAmountAdult":"2",
+        "productAmountChild":"1",
+        "productTotalPrice":"3000"
+    }
+]
