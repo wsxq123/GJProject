@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IntervalBlockComponent } from '../../../../shared/interval-block/interval-block.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { TranslateModule } from '@ngx-translate/core';
 import { TravelListItemComponent } from '../shared/travel-list-item/travel-list-item.component';
-import fakeJson from '@assets/travelList/fake.json';
-import { travelListItemType } from '../shared/travel-list-item/travel-list-item-type';
+// import fakeJson from '@assets/travelList/fake.json';
+// import { travelListItemType } from '../shared/travel-list-item/travel-list-item-type';
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { ProductService } from '@api/product-api/product.service';
+import { Product } from '@api/product-api/productType';
 
 @Component({
   selector: 'app-travel-list-page',
@@ -31,18 +33,22 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
 })
-export class TravelListPageComponent {
+export class TravelListPageComponent implements OnInit {
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.getAllProducts();
+  }
+
   path = '/about';
-  originralDataArray: travelListItemType[] = fakeJson;
-  dataArray: travelListItemType[] = this.originralDataArray;
-  newDataArray: travelListItemType[] = [];
+  dataArray: Product[] = [];
 
   locationCheckBoxList: locationCheckBoxListType = {
     title: 'TRAVEL',
     subCheckBox: [
-      { location: 'JAPAN', isChecked: false },
-      { location: 'KOREA', isChecked: false },
-      { location: 'EUROPE', isChecked: false },
+      { location: 'japen', isChecked: false },
+      { location: 'korea', isChecked: false },
+      { location: 'europe', isChecked: false },
     ],
   };
 
@@ -52,21 +58,26 @@ export class TravelListPageComponent {
     );
   }
 
-  //應改寫為重call api
+  //getProductsByArea 只會返回一個結果，等後端改正
   dataArrayFilter() {
-    this.newDataArray = [];
+    this.dataArray = [];
     console.log('tesd');
 
     this.locationCheckBoxList.subCheckBox.forEach((item) => {
       if (item.isChecked) {
-        this.originralDataArray.filter((i) => {
-          if (i.area == item.location) {
-            this.newDataArray.push(i);
-          }
-        });
+        this.productService
+          .getProductsByArea(item.location)
+          .subscribe((product: Product) => {
+            this.dataArray.push(product);
+          });
       }
     });
-    this.dataArray = this.newDataArray;
+  }
+
+  getAllProducts() {
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      this.dataArray = products;
+    });
   }
 }
 

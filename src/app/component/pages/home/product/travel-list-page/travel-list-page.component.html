@@ -46,7 +46,7 @@
     </div>
     <div style="width: 70%">
       <div *ngFor="let item of dataArray;let i = index">
-        <app-travel-list-item [travelListItem]="item" />
+        <app-travel-list-item [product]="item" />
         <mat-divider
           style="margin: 25px 0px; border: 1px solid lightgray"
           [style.display]="i === dataArray.length-1? 'none':'block'"></mat-divider>

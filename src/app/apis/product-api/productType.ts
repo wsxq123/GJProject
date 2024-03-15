@@ -3,6 +3,7 @@ export interface Product {
   productCode: string;
   productName: string;
   productArea: string;
+  productImgUrl?: string;
   startDate: string;
   endDate: string;
   travelDays: string;

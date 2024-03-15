@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { TranslateModule } from '@ngx-translate/core';
-import { travelListItemType } from './travel-list-item-type';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { Product } from '@api/product-api/productType';
+import { CartService } from '@component/shared/cart/cart.service';
 
 @Component({
   selector: 'app-travel-list-item',
@@ -23,5 +24,11 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class TravelListItemComponent {
   @Input()
-  travelListItem!: travelListItemType;
+  product!: Product;
+  cartService = inject(CartService);
+  cart = this.cartService.cart;
+
+  onAddToCart(product: Product) {
+    this.cartService.addProductToCart(product);
+  }
 }

@@ -1,6 +1,6 @@
 <div>
   <p style="white-space: pre-line; font-size: 24px; line-height: normal">
-    {{travelListItem.title | translate}}
+    {{product.productName| translate}}
   </p>
 </div>
 <div
@@ -12,7 +12,7 @@
   ">
   <div>
     <img
-      [src]="travelListItem.mainImgurl"
+      [src]="product.productImgUrl"
       alt="travelMainImg"
       style="width: 300px" />
   </div>
@@ -25,31 +25,28 @@
       width: 50%;
     ">
     <div style="white-space: pre-line">
-      <p>
-        {{'JPTOURCODE' | translate}}: {{travelListItem.travelInfo.productCode}}
-      </p>
-      <p>
-        {{'JPDEPARTUREDATE'|translate}}:{{travelListItem.travelInfo.startDate}}
-      </p>
-      <p>{{'JPRETURNDATE'|translate}}:{{travelListItem.travelInfo.endDate}}</p>
-      <p>{{travelListItem.travelInfo.travelDays}} Days</p>
+      <p>{{'JPTOURCODE' | translate}}: {{product.productCode}}</p>
+      <p>{{'JPDEPARTUREDATE'|translate}}:{{product.startDate}}</p>
+      <p>{{'JPRETURNDATE'|translate}}:{{product.endDate}}</p>
+      <p>{{product.travelDays}} Days</p>
       <br />
-      <p>
-        {{'JPADULTPRICE'|translate}}:{{travelListItem.travelInfo.adultTicketPrice}}
-      </p>
-      <p>
-        {{'JPCHILDPRICE'|translate}}:{{travelListItem.travelInfo.childrenTicketPrice}}
-      </p>
+      <p>{{'JPADULTPRICE'|translate}}:{{product.productPriceAdult}}</p>
+      <p>{{'JPCHILDPRICE'|translate}}:{{product.productPriceChild}}</p>
     </div>
   </div>
   <div style="display: flex; flex-direction: column; align-items: end">
-    <button mat-stroked-button style="font-size: 18px">
+    <button
+      mat-stroked-button
+      style="font-size: 18px"
+      (click)="onAddToCart(product)">
       {{'ADDTOCART'|translate}}
     </button>
-    <button
+
+    <!-- 行程詳細頁面(TODO) -->
+    <!-- <button
       mat-button
       style="margin: 10px 0px; font-size: 14px; text-decoration: underline">
       {{'ITINERARY'|translate}}
-    </button>
+    </button> -->
   </div>
 </div>
