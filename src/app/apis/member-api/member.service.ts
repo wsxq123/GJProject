@@ -55,8 +55,16 @@ export class MemberService {
     );
   }
 
-  // update a member info by member id (沒有此功能)
-  updateMember() {}
+  // update a member info by member id (test ok) => 但是使用者不知道自己的id，所以不能用
+  updateMember(member: Member): Observable<Member> {
+    return this.http.put<string>(this.baseUrl + '/update', member).pipe(
+      tap(console.log),
+      catchError((err) => {
+        console.log(err);
+        throw 'error in addMember' + err;
+      })
+    );
+  }
 
   // delete a member by member ID (test ok)
   deleteMember(memberID: string): Observable<string> {

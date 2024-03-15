@@ -70,9 +70,25 @@ export class AdminMemberComponent implements OnInit {
     memberAddress: '台北',
   };
 
+  fakeMemberData2 = {
+    memberId: '4',
+    memberName: '小明7878',
+    memberAccount: 'ming',
+    memberPassword: '787887',
+    memberEmail: 'ming@mail.com',
+    memberPhone: '09789',
+    memberAddress: '台北',
+  };
+
   onAddMember(member: Member) {
     this.memberService
       .addMember(member)
+      .subscribe((result) => console.log(result));
+  }
+
+  onUpdateMember(member: Member) {
+    this.memberService
+      .updateMember(member)
       .subscribe((result) => console.log(result));
   }
 

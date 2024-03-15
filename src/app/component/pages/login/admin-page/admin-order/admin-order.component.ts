@@ -18,7 +18,7 @@ export class AdminOrderComponent {
 
   onSearchByID() {
     this.orderService
-      .getOrdersByID(this.inputIDValue)
+      .getOrdersByMemberID(this.inputIDValue)
       .subscribe((orders: Order[]) => {
         console.log(orders);
       });

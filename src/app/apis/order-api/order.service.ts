@@ -25,8 +25,8 @@ export class OrderService {
     );
   }
 
-  //get orders by member ID (test OK => DB 回傳值差一位，請DB修正)
-  getOrdersByID(memberID: string): Observable<Order[]> {
+  //get orders by member ID (test OK => DB 只回傳一筆，待更新)
+  getOrdersByMemberID(memberID: string): Observable<Order[]> {
     return this.http.get<Order[]>(this.baseUrl + '/' + memberID).pipe(
       tap(console.log),
       catchError((err) => {
