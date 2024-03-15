@@ -13,6 +13,7 @@ import { TravelListPageComponent } from './component/pages/home/product/travel-l
 import { AdminPageComponent } from './component/pages/login/admin-page/admin-page.component';
 import { ProfileComponent } from './component/pages/login/profiles/profile.component';
 import { OrdersComponent } from './component/pages/login/orders/orders.component';
+import { CheckOrderComponent } from './component/pages/shopping-cart/check-order/check-order.component';
 
 export const routes: Routes = [
   {
@@ -85,5 +86,10 @@ export const routes: Routes = [
     path: 'admin',
     title: 'admin page',
     component: AdminPageComponent,
+  },
+  {
+    path: 'checkOrder',
+    title: 'checkOrder page',
+    component: CheckOrderComponent,
   },
 ];
