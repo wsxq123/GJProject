@@ -13,9 +13,19 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  //get all products
+  //get all products (test ok)
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl).pipe(
+      // tap(console.log),
+      catchError((err) => {
+        throw 'error in getProducts' + err;
+      })
+    );
+  }
+
+  //get products by area（backend only return one Product => need to change DB code)
+  getProductsByArea(area: string): Observable<Product> {
+    return this.http.get<Product>(this.baseUrl + '/' + area).pipe(
       tap(console.log),
       catchError((err) => {
         throw 'error in getProducts' + err;
@@ -23,17 +33,17 @@ export class ProductService {
     );
   }
 
-  //get a product by ID
-  getProductByID(productID: string): Observable<Product> {
-    return this.http.get<Product[]>(this.baseUrl + '/' + productID).pipe(
-      tap(console.log),
-      catchError((err) => {
-        throw 'error in getProduct' + err;
-      })
-    );
-  }
+  //get a product by ID (don't have this function)
+  // getProductByID(productID: string): Observable<Product> {
+  //   return this.http.get<Product>(this.baseUrl + '/' + productID).pipe(
+  //     tap(console.log),
+  //     catchError((err) => {
+  //       throw 'error in getProduct' + err;
+  //     })
+  //   );
+  // }
 
-  //add a product to DB
+  //add a product to DB (TODO)
   addProduct(product: Product): Observable<Product> {
     return this.http.post<string>(this.baseUrl + '/add', product).pipe(
       tap(console.log),
@@ -43,17 +53,17 @@ export class ProductService {
     );
   }
 
-  //update product
-  updateProduct(product: Product): Observable<Product> {
-    return this.http.put<string>(this.baseUrl + '/update', product).pipe(
-      tap(console.log),
-      catchError((err) => {
-        throw 'error in updateProduct' + err;
-      })
-    );
-  }
+  //update product (don't have this function)
+  // updateProduct(product: Product): Observable<Product> {
+  //   return this.http.put<string>(this.baseUrl + '/update', product).pipe(
+  //     tap(console.log),
+  //     catchError((err) => {
+  //       throw 'error in updateProduct' + err;
+  //     })
+  //   );
+  // }
 
-  //delete prodcut by product ID
+  //delete prodcut by product ID (TODO)
   deleteProduct(productID: string): Observable<Product> {
     return this.http.delete<any>(this.baseUrl + '/' + productID).pipe(
       tap(console.log),

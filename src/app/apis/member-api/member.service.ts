@@ -8,9 +8,6 @@ import { Observable, catchError, tap } from 'rxjs';
 })
 export class MemberService {
   baseUrl = 'http://localhost:8080/travelweb/members';
-  localMembers: Member[] = [];
-  localMember: Member[] = [];
-  errmsg: any;
 
   constructor(private http: HttpClient) {}
 

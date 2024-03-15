@@ -1,5 +1,5 @@
 export interface Order {
-  orderId: string;
+  orderId?: string;
   memberId: string;
   productCode: string;
   productName: string;
@@ -7,5 +7,5 @@ export interface Order {
   endDate: string;
   productAmountAdult: string;
   productAmountChild: string;
-  productTotalPrice: string;
+  productTotalPrice?: string;
 }

@@ -1,10 +1,3 @@
-// export interface Product {
-//   area: string;
-//   title: string;
-//   mainImgurl: string;
-//   travelInfo: travelInfo[];
-// }
-
 export interface Product {
   productId?: string;
   productCode: string;
@@ -13,6 +6,6 @@ export interface Product {
   startDate: string;
   endDate: string;
   travelDays: string;
-  adultTicketPrice: string;
-  childrenTicketPrice: string;
+  productPriceAdult: string;
+  productPriceChild: string;
 }

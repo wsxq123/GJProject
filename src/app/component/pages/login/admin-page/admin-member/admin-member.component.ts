@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
 import { MemberService } from '@api/member-api/member.service';
 import { Member } from '@api/member-api/memberType';
 
@@ -19,7 +18,6 @@ import { Member } from '@api/member-api/memberType';
     FormsModule,
     MatTableModule,
     MatButtonModule,
-    MatDividerModule,
   ],
   templateUrl: './admin-member.component.html',
 })
@@ -27,8 +25,7 @@ export class AdminMemberComponent implements OnInit {
   constructor(private memberService: MemberService) {}
 
   ngOnInit(): void {
-    this.onSearchAll();
-    this.onSearchByID();
+    console.log('AdminMemberComponent');
   }
 
   inputIDValue: string = '';

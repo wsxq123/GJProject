@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 import { ProductService } from '@api/product-api/product.service';
 import { Product } from '@api/product-api/productType';
 
@@ -20,6 +21,7 @@ import { Product } from '@api/product-api/productType';
     MatTableModule,
     MatButtonModule,
     MatDividerModule,
+    MatSelectModule,
   ],
   templateUrl: './admin-product.component.html',
 })
@@ -28,10 +30,14 @@ export class AdminProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.onSearchAll();
-    this.onSearchByID();
+    // this.onSearchByArea();
   }
 
-  inputIDValue: string = '';
+  areas = [
+    { value: 'japen', viewValue: 'japen' },
+    { value: 'korea', viewValue: 'korea' },
+    { value: 'europe', viewValue: 'europe' },
+  ];
 
   displayedColumns: string[] = [
     'productId',
@@ -41,20 +47,23 @@ export class AdminProductComponent implements OnInit {
     'startDate',
     'endDate',
     'travelDays',
-    'adultTicketPrice',
-    'childrenTicketPrice',
-    'delete',
+    'productPriceAdult',
+    'productPriceChild',
+    // 'delete',
   ];
 
   dataSource: Product[] = [];
+  areaValue!: string;
 
-  onSearchByID() {
+  onSearchByArea() {
     this.productService
-      .getProductByID(this.inputIDValue)
+      .getProductsByArea(this.areaValue)
       .subscribe((product: Product) => {
         this.dataSource = [];
         this.dataSource.push(product);
       });
+
+    console.log('areaValue: ' + this.areaValue);
   }
 
   onSearchAll() {
@@ -72,8 +81,8 @@ export class AdminProductComponent implements OnInit {
     startDate: '2024/03/24 (日)',
     endDate: '2024/03/24 (日)',
     travelDays: '1',
-    adultTicketPrice: '9999',
-    childrenTicketPrice: '8888',
+    productPriceAdult: '9999',
+    productPriceChild: '8888',
   };
 
   onAddProduct(product: Product) {
@@ -82,16 +91,12 @@ export class AdminProductComponent implements OnInit {
       .subscribe((result) => console.log(result));
   }
 
-  onDeleteProduct(memberID: string) {
-    this.productService
-      .deleteProduct(memberID)
-      .subscribe((result) => console.log(result));
-    console.log('memberID: ' + memberID);
-    // this.onSearchAll();
-  }
-
-  onInput(box: string) {
-    console.log(box);
-    this.inputIDValue = box;
-  }
+  // 刪除產品功能 (TODO)
+  // onDeleteProduct(memberID: string) {
+  //   this.productService
+  //     .deleteProduct(memberID)
+  //     .subscribe((result) => console.log(result));
+  //   console.log('memberID: ' + memberID);
+  //   // this.onSearchAll();
+  // }
 }

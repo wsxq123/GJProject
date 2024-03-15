@@ -5,6 +5,7 @@ import { MemberService } from '@api/member-api/member.service';
 import { Member } from '@api/member-api/memberType';
 import { AdminMemberComponent } from './admin-member/admin-member.component';
 import { AdminProductComponent } from './admin-product/admin-product.component';
+import { AdminOrderComponent } from './admin-order/admin-order.component';
 
 @Component({
   selector: 'app-admin-page',
@@ -16,6 +17,7 @@ import { AdminProductComponent } from './admin-product/admin-product.component';
     MatTabsModule,
     AdminMemberComponent,
     AdminProductComponent,
+    AdminOrderComponent,
   ],
 })
 export class AdminPageComponent implements OnInit {
