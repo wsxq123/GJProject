@@ -15,7 +15,7 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  //get orders (not test yet)
+  //get orders (test OK)
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.baseUrl).pipe(
       tap(console.log),
@@ -25,17 +25,19 @@ export class OrderService {
     );
   }
 
-  //get orders by member ID (test OK => DB 只回傳一筆，待更新)
+  //get orders by member ID (test fail => DB 似乎寫法有誤，待更新)
   getOrdersByMemberID(memberID: string): Observable<Order[]> {
     return this.http.get<Order[]>(this.baseUrl + '/' + memberID).pipe(
       tap(console.log),
       catchError((err) => {
+        console.log('getOrdersByMemberID err: ');
+        console.log(err);
         throw 'error in catchError' + err;
       })
     );
   }
 
-  //add orders to DB (not test yet)
+  //add orders to DB (test fail -> DB 尚未修改，目前是接收一筆，回傳order[])
   addOrders(orderList: Order[]): Observable<Order[]> {
     return this.http.post<string>(this.baseUrl + '/add', orderList).pipe(
       tap(console.log),
@@ -45,7 +47,7 @@ export class OrderService {
     );
   }
 
-  //add a order to DB (test OK)
+  //add a order to DB (test OK -> DB 回傳order[]，待修改)
   addOrder(order: Order): Observable<Order> {
     return this.http.post<string>(this.baseUrl + '/add', order).pipe(
       tap(console.log),

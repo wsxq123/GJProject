@@ -7,5 +7,5 @@ export interface Order {
   endDate: string;
   productAmountAdult: string;
   productAmountChild: string;
-  productTotalPrice?: string;
+  productTotalPrice: string;
 }

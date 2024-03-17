@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Product } from '@api/product-api/productType';
+import { Product, ShoppingCartType } from '@api/product-api/productType';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cart: Product[] = [];
+  cart: ShoppingCartType[] = [];
 
   addProductToCart(product: Product) {
-    this.cart.push(product);
-    console.log('cart: ');
-    console.log(this.cart);
+    const data: ShoppingCartType = {
+      ...product,
+      adultQuantity: 0,
+      childrenQuantity: 0,
+    };
+    this.cart.push(data);
+    console.log('product: ');
+    console.log(product);
+    console.log('data: ');
+    console.log(data);
   }
 
   clearCart() {

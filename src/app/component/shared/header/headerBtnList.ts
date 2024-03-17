@@ -15,7 +15,7 @@ export const headerBtnList: headerBtnItem[] = [
   },
   {
     btnText: 'MEMBER',
-    path: '/memberInfo',
+    path: '/profiles/:memberId',
     isWarn: false,
     isFlatBtn: true,
   },

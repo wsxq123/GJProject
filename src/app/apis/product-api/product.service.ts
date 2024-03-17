@@ -23,7 +23,7 @@ export class ProductService {
     );
   }
 
-  //get products by area（backend only return one Product => need to change DB code)
+  //get products by area（test fail => DB寫法似乎有誤，待改正)
   getProductsByArea(area: string): Observable<Product> {
     return this.http.get<Product>(this.baseUrl + '/' + area).pipe(
       tap(console.log),

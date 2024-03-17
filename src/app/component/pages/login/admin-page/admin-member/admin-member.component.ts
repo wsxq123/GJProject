@@ -62,17 +62,17 @@ export class AdminMemberComponent implements OnInit {
 
   fakeMemberData = {
     // memberId: '99',
-    memberName: 'TinaTest',
-    memberAccount: 'TinaTest',
-    memberPassword: '1234',
-    memberEmail: 'TinaTest@mail.com',
+    memberName: 'Tina999',
+    memberAccount: 'TinaTest2',
+    memberPassword: '12344321',
+    memberEmail: 'TinaTest2@mail.com',
     memberPhone: '09870',
     memberAddress: '台北',
   };
 
   fakeMemberData2 = {
     memberId: '4',
-    memberName: '小明7878',
+    memberName: '小明78',
     memberAccount: 'ming',
     memberPassword: '787887',
     memberEmail: 'ming@mail.com',

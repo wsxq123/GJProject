@@ -2,31 +2,52 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { OrderService } from '@api/order-api/order.service';
 import { Order } from '@api/order-api/orderType';
 
 @Component({
   selector: 'app-admin-order',
   standalone: true,
-  imports: [MatInputModule, MatFormFieldModule, MatButtonModule],
+  imports: [
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatTableModule,
+  ],
   templateUrl: './admin-order.component.html',
 })
 export class AdminOrderComponent {
   constructor(private orderService: OrderService) {}
 
   inputIDValue: string = '';
+  dataSource: Order[] = [];
+  displayedColumns: string[] = [
+    'orderId',
+    'memberId',
+    'productCode',
+    'productName',
+    'startDate',
+    'endDate',
+    'productAmountAdult',
+    'productAmountChild',
+    'productTotalPrice',
+    // 'delete',
+  ];
 
   onSearchByID() {
     this.orderService
       .getOrdersByMemberID(this.inputIDValue)
       .subscribe((orders: Order[]) => {
-        console.log(orders);
+        // console.log(orders);
+        this.dataSource = orders;
       });
   }
 
   onSearchAll() {
     this.orderService.getOrders().subscribe((orders: Order[]) => {
-      console.log(orders);
+      // console.log(orders);
+      this.dataSource = orders;
     });
   }
 
@@ -35,7 +56,7 @@ export class AdminOrderComponent {
       // orderId: '';
       memberId: '2',
       productCode: '24JY324BRM-J',
-      productName: '春櫻四國松山',
+      productName: '北海道吃帝王蟹',
       startDate: '2024/03/24 (日)',
       endDate: '2024/03/28 (四)',
       productAmountAdult: '2',
@@ -46,7 +67,7 @@ export class AdminOrderComponent {
       // orderId: '';
       memberId: '2',
       productCode: '24JY324BRM-J-2',
-      productName: '春櫻四國松山',
+      productName: '靜岡喝抹茶',
       startDate: '2024/04/24 (日)',
       endDate: '2024/04/28 (四)',
       productAmountAdult: '2',
@@ -57,7 +78,7 @@ export class AdminOrderComponent {
       // orderId: '';
       memberId: '2',
       productCode: '24JY324BRM-J-3',
-      productName: '春櫻四國松山',
+      productName: '京都看古蹟',
       startDate: '2024/05/24 (日)',
       endDate: '2024/05/28 (四)',
       productAmountAdult: '1',
@@ -70,7 +91,7 @@ export class AdminOrderComponent {
     // orderId: '4',
     memberId: '2',
     productCode: '24JY324BRM-J-99',
-    productName: '春櫻四國松山',
+    productName: '大阪吃大阪燒',
     startDate: '2024/03/24 (日)',
     endDate: '2024/03/28 (四)',
     productAmountAdult: '2',
@@ -89,6 +110,11 @@ export class AdminOrderComponent {
       .addOrders(orders)
       .subscribe((result) => console.log(result));
   }
+
+  // onDeleteOrder(orderId: string) {
+  //   console.log(orderId);
+  // }
+
   onInput(box: string) {
     console.log(box);
     this.inputIDValue = box;

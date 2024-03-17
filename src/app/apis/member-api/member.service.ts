@@ -32,7 +32,7 @@ export class MemberService {
     );
   }
 
-  // get a member by account & pwd (authentication) (not test yet)
+  // get a member by account & pwd (authentication) (ida test OK)
   getMember(account: string, password: string): Observable<Member> {
     return this.http
       .get<any>(this.baseUrl + '/' + account + '/' + password)
@@ -44,7 +44,7 @@ export class MemberService {
       );
   }
 
-  // add a member to DB(register) (test ok,等後端改回傳值型態為json,就不會catch error)
+  // add a member to DB(register) (test ok)
   addMember(member: Member): Observable<Member> {
     return this.http.post<string>(this.baseUrl + '/add', member).pipe(
       tap(console.log),

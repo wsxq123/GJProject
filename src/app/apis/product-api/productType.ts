@@ -10,3 +10,8 @@ export interface Product {
   productPriceAdult: string;
   productPriceChild: string;
 }
+
+export interface ShoppingCartType extends Product {
+  adultQuantity: number;
+  childrenQuantity: number;
+}
