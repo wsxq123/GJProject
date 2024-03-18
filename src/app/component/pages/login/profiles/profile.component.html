@@ -4,26 +4,25 @@
   <div class="userprofile-page">
     <div class="form">
       <div class="title">
-        <div *ngIf="user">
+        <div *ngIf="member">
           <h2>會員資訊</h2>
           <span>
             <div>
-              <p>&#9670; 帳號:{{user.memberAccount}}</p>
+              <p>&#9670; 帳號:{{member.memberAccount}}</p>
               <div>
-                <p>&#9670; 姓名: {{user.memberName}}</p>
-                <p>&#9670; Email: {{user.memberEmail}}</p>
+                <p>&#9670; 姓名: {{member.memberName}}</p>
+                <p>&#9670; Email: {{member.memberEmail}}</p>
                 <div>
-                  <p>&#9670; 手機: {{user.memberPhone}}</p>
+                  <p>&#9670; 手機: {{member.memberPhone}}</p>
                   <div>
-                    <p>&#9670; 地址:{{user.memberAddress}}</p>
+                    <p>&#9670; 地址:{{member.memberAddress}}</p>
                   </div>
 
                   <div class="button">
                     <button
                       mat-raised-button
                       color="primary"
-                      [routerLinkActiveOptions]="{exact: true}"
-                      [routerLink]=" '/orders'| localize"
+                      (click)="goToOrders()"
                       routerLinkActive="active">
                       購物清單
                     </button>

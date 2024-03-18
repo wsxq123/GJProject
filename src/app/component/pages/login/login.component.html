@@ -36,16 +36,19 @@
               type="submit"
               [disabled]="loading"
               mat-raised-button
-              color="primary">
+              color="primary"
+              [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]=" '/profiles'| localize"
+              routerLinkActive="active">
               登入
             </button>
           </div>
-        </div>
 
-        <p class="message">
-          <a routerLink="../register">註冊會員 |</a>
-          <a routerLink="../forgetpassword">忘記密碼</a>
-        </p>
+          <p class="message">
+            <a routerLink="../register">註冊會員 |</a>
+            <a routerLink="../forgetpassword">忘記密碼</a>
+          </p>
+        </div>
       </form>
     </div>
   </div>

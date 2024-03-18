@@ -11,8 +11,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AccountService } from './services/account.service';
-import { AlertService } from './services/alert.service';
+import { MemberService } from '@api/member-api/member.service';
 import { MatButtonModule } from '@angular/material/button';
 import { ConfirmedValidator } from './components';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -37,49 +36,33 @@ import { MatCommonModule } from '@angular/material/core';
   ],
 })
 export class RegisterComponent implements OnInit {
-  member: unknown;
-  travel: unknown;
-
-  aboutus() {
-    throw new Error('Method not implemented.');
-  }
-  login() {
-    throw new Error('Method not implemented.');
-  }
   form!: FormGroup;
   loading = false;
   submitted = false;
-  AlertService: unknown;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private accountService: AccountService,
-    private alertService: AlertService,
+    private memberService: MemberService,
     private snackBar: MatSnackBar
-  ) {
-    // redirect to home if already logged in
-    if (this.accountService.userValue) {
-      this.router.navigate(['/']);
-    }
-  }
+  ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group(
       {
-        fullName: ['', Validators.required],
-        username: ['', Validators.required],
-        mobile: ['', [Validators.required]],
-        primaryEmail: new FormControl('', [
+        memberName: ['', Validators.required],
+        memberAccount: ['', Validators.required],
+        memberPhone: ['', Validators.required],
+        memberEmail: new FormControl('', [
           Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.com$'),
+          Validators.email,
         ]),
-        address: [''],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        memberAddress: ['', Validators.required],
+        memberPassword: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
       },
       {
-        validators: ConfirmedValidator('password', 'confirmPassword'),
+        validators: ConfirmedValidator('memberPassword', 'confirmPassword'),
       }
     );
   }
@@ -91,35 +74,32 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-    this.alertService.clear();
-
-    if (this.form.invalid) {
-      console.log('Form is invalid');
-      return;
-    }
-
     this.loading = true;
-    this.accountService
-      .register(this.form.value)
+
+    //if (this.form.invalid) {
+    // console.log('Form is invalid');
+    //return;
+    //}
+
+    this.memberService
+      .addMember(this.form.value)
       .pipe(first())
       .subscribe({
         next: () => {
-          //this.alertService.success('Registration successful', true);
-          this.openSuccessSnackBar('Registration successful');
+          this.openSuccessSnackBar('註冊成功');
 
-          this.router.navigate(['login/userlogin'], {
+          this.router.navigate([`/zh-TW/login`], {
             queryParams: { registered: true },
           });
         },
         error: (error: HttpErrorResponse) => {
-          console.log('Error:', error); // Log the error object to see its content
-          if (error.message.includes('already taken')) {
+          console.log('Error:', error);
+          if (error.message.includes('error in addMember')) {
             this.openErrorSnackBar(
-              'Username "' + this.form.value.username + '" is already taken'
+              '使用者帳號 "' + this.form.value.memberAccount + '" 已被使用'
             );
           } else {
-            this.alertService.error('An error occurred: ' + error.message);
+            console.log('An error occurred: ' + error.message);
           }
           this.loading = false;
         },

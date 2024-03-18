@@ -1,7 +1,6 @@
+import { MemberService } from '@api/member-api/member.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
-import { AccountService } from './services/account.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -20,11 +19,14 @@ export class ForgetPasswordComponent implements OnInit {
   error?: string;
 
   constructor(
-    private accountService: AccountService,
+    private memberService: MemberService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
 
+  get f() {
+    return this.form.controls;
+  }
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -32,28 +34,13 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
+    const email = this.f['email'].value;
+
     this.error = '';
     this.submitted = true;
 
-    if (this.form.invalid) {
-      console.log('Form is invalid');
+    if (email) {
+      this.router.navigate(['/zh-TW/resetpassword']);
     }
-
-    this.accountService.forgetPassword(this.f['email'].value).subscribe({
-      next: () => {
-        console.log('Password reset email sent successfully');
-        this.router.navigate(['/resetpassword']);
-        // You may redirect or show a success message here
-      },
-      error: (err: HttpErrorResponse) => {
-        this.error =
-          err.error.message ||
-          'An error occurred while processing your request.';
-      },
-    });
-  }
-
-  get f() {
-    return this.form.controls;
   }
 }

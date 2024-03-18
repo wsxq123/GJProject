@@ -4,22 +4,22 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
-import { AccountService } from '../services/account.service';
+import { MemberService } from '@api/member-api/member.service';
 
 export function authGuard(
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) {
   const router = inject(Router);
-  const accountService = inject(AccountService);
-  const user = accountService.userValue;
-  if (user) {
+  const memberService = inject(MemberService);
+  const member = memberService.memberValue;
+  if (member) {
     // authorised so return true
     return true;
   }
 
   // not logged in so redirect to login page with the return url
-  router.navigate(['/login'], {
+  router.navigate(['login'], {
     queryParams: { returnUrl: state.url },
   });
   return false;

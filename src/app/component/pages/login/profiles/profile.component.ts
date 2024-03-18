@@ -1,10 +1,16 @@
-import { MemberService } from '../services/member.service';
+import { MemberService } from '@api/member-api/member.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models';
+import { Member } from '@api/member-api/memberType';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { MatButtonModule } from '@angular/material/button';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-userprofile',
@@ -20,24 +26,43 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit {
-  user: User = new User();
+  member!: Member;
+  cookieValue = '';
 
   constructor(
     private memberService: MemberService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const memberId = params['memberId'];
-      this.memberService.getById(memberId).subscribe(
-        (user: User) => {
-          this.user = user;
+    this.isMemberInCookie();
+  }
+
+  isMemberInCookie() {
+    this.cookieValue = this.cookieService.get('memberId');
+    console.log(this.cookieValue);
+
+    if (this.cookieService.get('memberId')) {
+      this.memberService.getMemberByID(this.cookieValue).subscribe(
+        (member: Member) => {
+          this.member = member;
         },
         (error) => {
           console.error('Error fetching user details:', error);
         }
       );
-    });
+
+      this.router.navigate(['/zh-TW/profiles/' + this.cookieValue]);
+    }
+  }
+
+  goToOrders(): void {
+    if (this.member.memberId) {
+      this.router.navigate([`/zh-TW/orders/${this.member.memberId}`]);
+    } else {
+      this.router.navigate([`/zh-TW/noorders`]);
+    }
   }
 }

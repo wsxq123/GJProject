@@ -1,5 +1,8 @@
+import { Order } from '@api/order-api/orderType';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OrderService } from '@api/order-api/order.service';
 
 @Component({
   selector: 'app-orders',
@@ -8,43 +11,27 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
 })
-export class OrdersComponent {
-  orders = [
-    {
-      pictureUrl: 'assets/image/japanTravelPage/HighLightImg04.png',
-      orderId: '1',
-      memberId: '2',
-      productCode: 'JP11',
-      productName: '日本三天兩夜',
-      startDate: '2024/03/24 (日)',
-      endDate: '2024/03/28 (四)',
-      productAmountAdult: '2',
-      productAmountChild: '2',
-      productTotalPrice: '3600',
-    },
-    {
-      pictureUrl: 'assets/image/koreaTravelPage/HighLightImg02.png',
-      orderId: '2',
-      memberId: '2',
-      productCode: 'KR12',
-      productName: '韓國三天兩夜',
-      startDate: '2024/03/24 (日)',
-      endDate: '2024/03/28 (四)',
-      productAmountAdult: '5',
-      productAmountChild: '4',
-      productTotalPrice: '9890',
-    },
-    {
-      pictureUrl: 'assets/image/europeTravelPage/TravelMainImg.png',
-      orderId: '3',
-      memberId: '2',
-      productCode: 'EU13',
-      productName: '歐洲三天兩夜',
-      startDate: '2024/03/24 (日)',
-      endDate: '2024/03/28 (四)',
-      productAmountAdult: '2',
-      productAmountChild: '1',
-      productTotalPrice: '3000',
-    },
-  ];
+export class OrdersComponent implements OnInit {
+  orders: Order[] = [];
+
+  constructor(
+    private orderService: OrderService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const memberId = params['memberId'];
+      this.orderService.getOrdersByMemberID(memberId).subscribe(
+        (data: Order[]) => {
+          this.orders = data;
+          console.log(data);
+          this.orders.push();
+        },
+        (error) => {
+          console.error('Error fetching order details:', error);
+        }
+      );
+    });
+  }
 }

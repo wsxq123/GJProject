@@ -1,11 +1,14 @@
 .container {
-  max-width:  800px;
+  max-width:  1000px;
   margin: 0 auto;
+
 }
 
 .orders-page {
-  padding: 20px;
+  padding: 50px;
   background-color: pink ;
+  margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .order-details .order-item {
@@ -34,20 +37,15 @@ li {
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 10px;
-  background-color:#0ACDB7;
+  background-color:ivory;
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  line-height: 25px;
 
-}
-
-
-.orders-details .li {
-  margin-left: 10px;
-  align-items: right;
 }
 
 li p {
+  font-size: 15px;
   text-align: left;
 }
 

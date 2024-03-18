@@ -7,7 +7,7 @@ import { KoreaTravelPageComponent } from './component/pages/home/product/korea-t
 import { EuropeTravelPageComponent } from './component/pages/home/product/europe-travel-page/europe-travel-page.component';
 import { JapanTravelPageComponent } from './component/pages/home/product/japan-travel-page/japan-travel-page.component';
 import { RegisterComponent } from './component/pages/login/register.component';
-import { ForgetPasswordComponent } from './component/pages/login/forgetpassword.component';
+import { ForgetPasswordComponent } from './component/pages/login/forgetpassword/forgetpassword.component';
 import { ResetpasswordComponent } from './component/pages/login/resetpassword/resetpassword.component';
 import { TravelListPageComponent } from './component/pages/home/product/travel-list-page/travel-list-page.component';
 import { AdminPageComponent } from './component/pages/login/admin-page/admin-page.component';
@@ -47,7 +47,7 @@ export const routes: Routes = [
     title: 'login page',
     component: LoginComponent,
   },
-  // eslint-disable-next-line prettier/prettier
+
   {
     path: 'register',
     title: 'register page',
@@ -74,7 +74,7 @@ export const routes: Routes = [
     component: ShoppingCartComponent,
   },
   {
-    path: 'orders',
+    path: 'orders/:memberId',
     title: 'orderlist page',
     component: OrdersComponent,
   },
