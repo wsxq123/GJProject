@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './payok.component.html',
-  styleUrl: './payok.component.scss'
+  styleUrl: './payok.component.scss',
 })
-export class PayokComponent {
-
-}
+export class PayokComponent {}

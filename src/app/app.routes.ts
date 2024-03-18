@@ -14,6 +14,7 @@ import { AdminPageComponent } from './component/pages/login/admin-page/admin-pag
 import { ProfileComponent } from './component/pages/login/profiles/profile.component';
 import { OrdersComponent } from './component/pages/login/orders/orders.component';
 import { CheckOrderComponent } from './component/pages/shopping-cart/check-order/check-order.component';
+import { PayokComponent } from '@component/pages/shopping-cart/payok/payok.component';
 
 export const routes: Routes = [
   {
@@ -91,5 +92,10 @@ export const routes: Routes = [
     path: 'checkOrder',
     title: 'checkOrder page',
     component: CheckOrderComponent,
+  },
+  {
+    path: 'payok',
+    title: 'payok page',
+    component: PayokComponent,
   },
 ];

@@ -22,6 +22,10 @@ export class CartService {
     console.log(data);
   }
 
+  replaceShoppingCart(list: ShoppingCartType[]) {
+    this.cart = list;
+  }
+
   shoppingCartToOrder(data: ShoppingCartType): Order {
     return {
       ...data,

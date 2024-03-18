@@ -2,54 +2,54 @@
 <div class="rectangle-container bgContainer">
   <!-- app.component.html -->
 
-  <ng-container *ngFor="let trip of tripData">
+  <ng-container *ngFor="let cartItem of cart">
     <div>
       <div style="display: inline-block">
         <img
-          src="{{ trip.mainImgurl }}"
+          src="{{ cartItem.productImgUrl }}"
           alt="Trip Image"
           width="200"
           height="100" />
       </div>
       <div style="display: inline-block; margin-left: 30px">
         <div style="text-align: left">
-          <h1 style="font-size: 14px">國家: {{ trip.area }}</h1>
-          <h1 style="font-size: 14px">行程名稱: {{ trip.title }}</h1>
+          <h1 style="font-size: 14px">國家: {{ cartItem.productArea }}</h1>
+          <h1 style="font-size: 14px">行程名稱: {{ cartItem.productName }}</h1>
         </div>
       </div>
-      <ng-container *ngFor="let t of trip.travelInfo">
-        <h1 style="font-size: 12px">產品代碼: {{ t.productCode }}</h1>
-        <h1 style="font-size: 12px">出發日期: {{ t.startDate }}</h1>
+
+      <h1 style="font-size: 12px">產品代碼: {{ cartItem.productCode }}</h1>
+      <h1 style="font-size: 12px">出發日期: {{ cartItem.startDate }}</h1>
+      <h1 style="font-size: 12px">
+        結束日期: {{ cartItem.endDate }} &nbsp;&nbsp;&nbsp;共幾天: {{
+        cartItem.travelDays }}天
+      </h1>
+      <div>
+        <!-- Japan trip info -->
         <h1 style="font-size: 12px">
-          結束日期: {{ t.endDate }} &nbsp;&nbsp;&nbsp;共幾天: {{ t.travelDays
-          }}天
+          成人價格: {{ cartItem.productPriceAdult }}元 &nbsp;&nbsp;
+          <button (click)="handleMinus(cartItem, 'adult')">-</button>
+          {{ cartItem.productAmountAdult }}
+          <button (click)="handlePlus(cartItem, 'adult')">+</button>
+          &nbsp;&nbsp;&nbsp;共: {{ countSum(cartItem.productPriceAdult,
+          cartItem.productAmountAdult) }}元
         </h1>
-        <div>
-          <!-- Japan trip info -->
-          <h1 style="font-size: 12px">
-            成人價格: {{ t.adultTicketPrice }}元 &nbsp;&nbsp;
-            <button (click)="handleMinus(trip, 'adult')">-</button>
-            {{ trip.adultQuantity }}
-            <button (click)="handlePlus(trip, 'adult')">+</button>
-            &nbsp;&nbsp;&nbsp;共: {{ countSum(t.adultTicketPrice,
-            trip.adultQuantity) }}元
-          </h1>
-          <h1 style="font-size: 12px">
-            兒童價格: {{ t.childrenTicketPrice }}元&nbsp;&nbsp;&nbsp;
-            <button (click)="childrenMinus(trip, 'children')">-</button>
-            {{ trip.childrenQuantity }}
-            <button (click)="childrenPlus(trip, 'children')">+</button>
-            &nbsp;&nbsp;&nbsp;共: {{ countSum(t.childrenTicketPrice,
-            trip.childrenQuantity) }}元
-          </h1>
-        </div>
-        <div>
-          <h1 style="font-size: 12px">
-            小計: {{ countSum(t.adultTicketPrice, trip.adultQuantity) +
-            countSum(t.childrenTicketPrice, trip.childrenQuantity) }}元
-          </h1>
-        </div>
-      </ng-container>
+        <h1 style="font-size: 12px">
+          兒童價格: {{ cartItem.productPriceChild }}元&nbsp;&nbsp;&nbsp;
+          <button (click)="childrenMinus(cartItem, 'children')">-</button>
+          {{ cartItem.productAmountChild }}
+          <button (click)="childrenPlus(cartItem, 'children')">+</button>
+          &nbsp;&nbsp;&nbsp;共: {{ countSum(cartItem.productPriceChild,
+          cartItem.productAmountChild) }}元
+        </h1>
+      </div>
+      <div>
+        <h1 style="font-size: 12px">
+          小計: {{ countSum(cartItem.productPriceAdult,
+          cartItem.productAmountAdult) + countSum(cartItem.productPriceChild,
+          cartItem.productAmountChild) }}元
+        </h1>
+      </div>
     </div>
 
     <mat-divider
@@ -58,6 +58,11 @@
   <h1 style="font-size: 24px; text-align: right">
     總額: {{ calculateTotal() }}元
   </h1>
+
+  <button (click)="clearCart()" style="font-size: 16px">重置</button>
+
+  <button (click)="removeItem()" style="font-size: 16px">Delete</button>
+
   <!--<hr />-->
   <div class="rectangle-container">
     <p style="font-size: 24px; margin-bottom: 20px">報名須知</p>
@@ -107,7 +112,8 @@
               font-size: 12px;
               border: 0.5px solid black;
               padding: 10px 10px;
-            ">
+            "
+            (click)="setCartTicketInfo()">
             <!-- 調整按鈕大小 -->
             下一頁
           </button>
