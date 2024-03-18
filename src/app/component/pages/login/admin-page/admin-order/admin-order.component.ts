@@ -94,9 +94,9 @@ export class AdminOrderComponent {
     productName: '大阪吃大阪燒',
     startDate: '2024/03/24 (日)',
     endDate: '2024/03/28 (四)',
-    productAmountAdult: '2',
-    productAmountChild: '2',
-    productTotalPrice: '203600',
+    productAmountAdult: 2,
+    productAmountChild: 2,
+    productTotalPrice: 203600,
   };
 
   onAddOrder(order: Order) {

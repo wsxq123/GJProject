@@ -71,7 +71,7 @@ export class AdminMemberComponent implements OnInit {
   };
 
   fakeMemberData2 = {
-    memberId: '4',
+    memberId: '909',
     memberName: '小明78',
     memberAccount: 'ming',
     memberPassword: '787887',
@@ -80,9 +80,23 @@ export class AdminMemberComponent implements OnInit {
     memberAddress: '台北',
   };
 
+  fakeMemberData3 = {
+    memberAccount: 'william',
+    memberPassword: 'w12345',
+  };
+
   onAddMember(member: Member) {
     this.memberService
       .addMember(member)
+      .subscribe((result) => console.log(result));
+  }
+
+  onTestLogin() {
+    this.memberService
+      .getMember(
+        this.fakeMemberData3.memberAccount,
+        this.fakeMemberData3.memberPassword
+      )
       .subscribe((result) => console.log(result));
   }
 

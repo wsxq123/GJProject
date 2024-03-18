@@ -58,32 +58,22 @@ export class ResetpasswordComponent implements OnInit {
     this.memberService
       .getMember(this.f['memberAccount'].value, '-1')
       .subscribe((member) => {
-        console.log(member);
-
         const newMember: Member = {
           ...member,
           memberAccount: this.f['memberAccount'].value,
           memberPassword: this.f['memberPassword'].value,
         };
-        console.log('newMember');
-        console.log(newMember);
 
-        this.memberService
-          .updateMember(newMember)
-          .subscribe((result) => console.log(result));
-
-        // this.memberService.updateMember(newMember).subscribe(
-        //   (response) => {
-        //     console.log('Password updated successfully:', response);
-        //     this.loading = false;
-        //     this.router.navigate([`/zh-TW/login`]);
-        //   },
-        //   (error) => {
-        //     console.error('Error updating password:', error);
-        //     this.loading = false;
-        //     this.error = '查無此帳號，請先註冊為會員';
-        //   }
-        // );
+        this.memberService.updateMember(newMember).subscribe({
+          next: (response) => {
+            console.log(response);
+            this.router.navigate([`/zh-TW/login`]);
+          },
+          error: (error) => {
+            this.error = error;
+            this.loading = false;
+          },
+        });
       });
   }
 }

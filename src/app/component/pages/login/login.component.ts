@@ -8,7 +8,6 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-
 import { MemberService } from '@api/member-api/member.service';
 import { MatButtonModule } from '@angular/material/button';
 import { IntervalBlockComponent } from '../../shared/interval-block/interval-block.component';
@@ -39,7 +38,6 @@ export class LoginComponent implements OnInit {
   error?: string;
   success?: string;
   hide = false;
-  member!: Member;
   cookieService = inject(CookieService);
 
   constructor(
@@ -69,12 +67,15 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
 
+    console.log('submit: ');
+    console.log(
+      this.f['memberAccount'].value + ' | ' + this.f['memberPassword'].value
+    );
+
     this.memberService
       .getMember(this.f['memberAccount'].value, this.f['memberPassword'].value)
       .subscribe({
         next: (member: Member) => {
-          console.log(member);
-          this.member = member;
           this.cookieService.set('memberId', member.memberId!);
 
           if (

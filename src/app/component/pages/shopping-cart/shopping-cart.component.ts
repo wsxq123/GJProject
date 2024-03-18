@@ -1,4 +1,4 @@
-import { Component, VERSION, inject, Input, OnInit } from '@angular/core';
+import { Component, VERSION, inject, Input } from '@angular/core';
 import { IntervalBlockComponent } from '../../shared/interval-block/interval-block.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
@@ -22,12 +22,13 @@ import { CartService } from '@component/shared/cart/cart.service';
     MatDividerModule,
   ],
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent {
   path = '/checkOrder';
   cartService = inject(CartService);
   cart = this.cartService.cart;
   @Input()
   totalAmount!: number;
+
   data: ShoppingCartType[] = [
     {
       productImgUrl: 'assets/image/japenTravelPage/TravelMainImg.png ',
@@ -58,10 +59,6 @@ export class ShoppingCartComponent implements OnInit {
       productTotalPrice: 0,
     },
   ];
-
-  ngOnInit(): void {
-    this.cart = this.data;
-  }
 
   //下一頁
   checkboxChecked: boolean = false;

@@ -41,10 +41,8 @@ export class ProfileComponent implements OnInit {
   }
 
   isMemberInCookie() {
-    this.cookieValue = this.cookieService.get('memberId');
-    console.log(this.cookieValue);
-
     if (this.cookieService.get('memberId')) {
+      this.cookieValue = this.cookieService.get('memberId');
       this.memberService.getMemberByID(this.cookieValue).subscribe(
         (member: Member) => {
           this.member = member;

@@ -32,7 +32,8 @@ export class MemberService {
     );
   }
 
-  // get a member by account & pwd (authentication) (not test yet)
+  // get a member by account & pwd (authentication) (ida test OK)
+  // if password == '-1', return member object (for reset pwd page)
   getMember(account: string, password: string): Observable<Member> {
     return this.http
       .get<any>(this.baseUrl + '/' + account + '/' + password)
@@ -61,7 +62,7 @@ export class MemberService {
       tap(console.log),
       catchError((err) => {
         console.log(err);
-        throw 'error in addMember' + err;
+        throw 'error in updateMember' + err;
       })
     );
   }
