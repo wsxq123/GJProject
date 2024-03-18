@@ -23,12 +23,12 @@ export class ProductService {
     );
   }
 
-  //get products by area（test fail => DB寫法似乎有誤，待改正)
-  getProductsByArea(area: string): Observable<Product> {
-    return this.http.get<Product>(this.baseUrl + '/' + area).pipe(
+  //get products by area（test OK => DB寫法似乎有誤，待改正 => 我改好了)
+  getProductsByArea(area: string): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + '/' + area).pipe(
       tap(console.log),
       catchError((err) => {
-        throw 'error in getProducts' + err;
+        throw 'error in getProductsByArea' + err;
       })
     );
   }

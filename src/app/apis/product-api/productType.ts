@@ -12,6 +12,6 @@ export interface Product {
 }
 
 export interface ShoppingCartType extends Product {
-  adultQuantity: number;
-  childrenQuantity: number;
+  productAmountAdult: number;
+  productAmountChild: number;
 }

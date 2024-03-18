@@ -58,9 +58,8 @@ export class AdminProductComponent implements OnInit {
   onSearchByArea() {
     this.productService
       .getProductsByArea(this.areaValue)
-      .subscribe((product: Product) => {
-        this.dataSource = [];
-        this.dataSource.push(product);
+      .subscribe((product: Product[]) => {
+        this.dataSource = product;
       });
 
     console.log('areaValue: ' + this.areaValue);

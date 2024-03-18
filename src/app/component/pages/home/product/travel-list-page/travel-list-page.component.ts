@@ -58,17 +58,16 @@ export class TravelListPageComponent implements OnInit {
     );
   }
 
-  //getProductsByArea 只會返回一個結果，等後端改正
   dataArrayFilter() {
     this.dataArray = [];
-    console.log('tesd');
+    console.log('clear dataArray');
 
     this.locationCheckBoxList.subCheckBox.forEach((item) => {
       if (item.isChecked) {
         this.productService
           .getProductsByArea(item.location)
-          .subscribe((product: Product) => {
-            this.dataArray.push(product);
+          .subscribe((product: Product[]) => {
+            this.dataArray = this.dataArray.concat(product);
           });
       }
     });

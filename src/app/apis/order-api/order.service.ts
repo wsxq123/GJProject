@@ -25,14 +25,14 @@ export class OrderService {
     );
   }
 
-  //get orders by member ID (test fail => DB 似乎寫法有誤，待更新)
+  //get orders by member ID (test fail => DB 似乎寫法有誤，待更新 => 我改好了)
   getOrdersByMemberID(memberID: string): Observable<Order[]> {
     return this.http.get<Order[]>(this.baseUrl + '/' + memberID).pipe(
       tap(console.log),
       catchError((err) => {
         console.log('getOrdersByMemberID err: ');
         console.log(err);
-        throw 'error in catchError' + err;
+        throw 'error in getOrdersByMemberID' + err;
       })
     );
   }

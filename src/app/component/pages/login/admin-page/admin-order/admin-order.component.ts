@@ -59,9 +59,9 @@ export class AdminOrderComponent {
       productName: '北海道吃帝王蟹',
       startDate: '2024/03/24 (日)',
       endDate: '2024/03/28 (四)',
-      productAmountAdult: '2',
-      productAmountChild: '2',
-      productTotalPrice: '203600',
+      productAmountAdult: 2,
+      productAmountChild: 2,
+      productTotalPrice: 203600,
     },
     {
       // orderId: '';
@@ -70,9 +70,9 @@ export class AdminOrderComponent {
       productName: '靜岡喝抹茶',
       startDate: '2024/04/24 (日)',
       endDate: '2024/04/28 (四)',
-      productAmountAdult: '2',
-      productAmountChild: '2',
-      productTotalPrice: '203600',
+      productAmountAdult: 2,
+      productAmountChild: 2,
+      productTotalPrice: 203600,
     },
     {
       // orderId: '';
@@ -81,9 +81,9 @@ export class AdminOrderComponent {
       productName: '京都看古蹟',
       startDate: '2024/05/24 (日)',
       endDate: '2024/05/28 (四)',
-      productAmountAdult: '1',
-      productAmountChild: '1',
-      productTotalPrice: '101800',
+      productAmountAdult: 1,
+      productAmountChild: 1,
+      productTotalPrice: 101800,
     },
   ];
 

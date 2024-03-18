@@ -5,7 +5,7 @@ export interface Order {
   productName: string;
   startDate: string;
   endDate: string;
-  productAmountAdult: string;
-  productAmountChild: string;
-  productTotalPrice: string;
+  productAmountAdult: number;
+  productAmountChild: number;
+  productTotalPrice: number;
 }

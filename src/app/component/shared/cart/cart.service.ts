@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Product, ShoppingCartType } from '@api/product-api/productType';
+import { Product } from '@api/product-api/productType';
+import { Order } from '@api/order-api/orderType';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cart: ShoppingCartType[] = [];
+  cart: Order[] = [];
 
   addProductToCart(product: Product) {
-    const data: ShoppingCartType = {
+    const data: Order = {
       ...product,
-      adultQuantity: 0,
-      childrenQuantity: 0,
+      memberId: 'nobody',
+      productAmountAdult: 0,
+      productAmountChild: 0,
+      productTotalPrice: 0,
     };
     this.cart.push(data);
     console.log('product: ');
@@ -19,6 +22,16 @@ export class CartService {
     console.log('data: ');
     console.log(data);
   }
+
+  // productConvertToOrder(product: Product): Order {
+  //   return {
+  //     ...product,
+  //     memberId: '3',
+  //     productAmountAdult: 0,
+  //     productAmountChild: 0,
+  //     productTotalPrice: 0,
+  //   };
+  // }
 
   clearCart() {
     this.cart = [];
