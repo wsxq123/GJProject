@@ -14,4 +14,5 @@ export interface Product {
 export interface ShoppingCartType extends Product {
   productAmountAdult: number;
   productAmountChild: number;
+  productTotalPrice: number;
 }
