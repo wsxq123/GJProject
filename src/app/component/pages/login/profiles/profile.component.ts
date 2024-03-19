@@ -53,6 +53,8 @@ export class ProfileComponent implements OnInit {
       );
 
       this.router.navigate(['/zh-TW/profiles/' + this.cookieValue]);
+    } else {
+      this.router.navigate(['/zh-TW/login']);
     }
   }
 
